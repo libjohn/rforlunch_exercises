@@ -16,16 +16,12 @@ license: CC BY
 a.  Load the `tidyverse` library package
 
 ```{r}
-#| message: false
-#| warning: false
 library(tidyverse)
 ```
 
 b.  Import data
 
 ```{r}
-#| message: false
-#| warning: false
 library(here)
 brodhead <- read_csv(here("data", "brodhead_center.csv"))
 ```

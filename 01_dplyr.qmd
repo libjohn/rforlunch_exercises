@@ -32,17 +32,13 @@ We've prebuilt a data set that has information about menus in Duke's Brodhead Ce
 a.  Add a code chunk and Load the `tidyverse` library package
 
 ```{r}
-#| warning: false
-#| message: false
 library(tidyverse)
 ```
 
 b.  Insert a code chunk and import (`read_csv()`) the brodhead practice data from the `data` directory. Assign the imported data to an object name, e.g. "brodhead"
 
 ```{r}
-#| warning: false
-#| message: false
-brodhead <- read_csv("../data/brodhead_center.csv")
+brodhead <- read_csv()
 ```
 
 Now you are ready to make new code chunks and follow the steps in Exercise 1 (below).
