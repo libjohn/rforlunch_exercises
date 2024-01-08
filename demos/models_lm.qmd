@@ -1,0 +1,340 @@
+---
+title: "Models: inference and prediction"
+subtitle: "linear regression and {tidymodels}"
+author: 
+  name: "John Little"
+  orcid: 0000-0002-3600-0972
+  affiliation:
+    - name: Duke University Libraries
+      department: Center for Data & Visualization Sciences
+      city: Durham
+      state: NC
+      country: US
+      url:  https://library.duke.edu/data
+institute: "Center for Data & Visualization Sciences"
+date: today
+
+format: 
+  html:
+    toc: true
+    embed-resources: true
+    df-print: paged
+    license: CC BY
+editor: visual
+bibliography: references.bib
+---
+
+::: callout-note
+## Models
+
+All models are wrong, but some are useful --- George Box
+:::
+
+## Resources
+
+-   <https://tellingstorieswithdata.com/>
+
+-   <https://moderndive.com/>
+
+-   <https://www.tidymodels.org/start/>
+
+## Load library packages
+
+```{r}
+library(tidyverse)
+library(moderndive)
+library(broom)
+library(skimr)
+# library(tidymodels)
+library(arrow)
+```
+
+## Import data
+
+Data from *Modern Dive* [@lipovetsky2020]
+
+```{r}
+evals_ch5 <- evals %>% 
+  select(ID, score, bty_avg, age, gender)
+
+evals
+
+```
+
+### Summarize data
+
+```{r}
+evals_ch5 |> 
+  summary()
+```
+
+### Skim data (EDA)
+
+```{r}
+skimr::skim(evals_ch5)
+```
+
+## Correlation
+
+```{r}
+my_cor_df <- starwars |>  
+  filter(mass < 500) |>  
+  summarise(my_cor = cor(height, mass)) 
+
+my_cor_df
+```
+
+## Linear regression
+
+### `geom_smooth()`
+
+```{r}
+#| label: smooth-regression
+evals_ch5 %>% 
+  ggplot(aes(age, score)) +  # color = gender
+  geom_jitter() +
+  geom_smooth(method = lm, formula = y ~ x, se = FALSE) 
+```
+
+### `lm()` model
+
+linear regression model
+
+predict `score` from `bty_avg`
+
+```{r}
+evals_ch5 |> 
+  select(score, bty_avg)
+
+# Fit regression model:
+score_model <- lm(score ~ bty_avg, data = evals_ch5)
+
+score_model
+```
+
+### {broom} tidy the model
+
+```{r}
+broom::tidy(score_model)
+```
+
+### {broom} glance
+
+Evaluate the model
+
+```{r}
+broom::glance(score_model)
+```
+
+### {broom} glance
+
+the fitted inference and the residuals
+
+```{r}
+broom::augment(score_model)
+```
+
+## Nesting data to iterate models by category
+
+```{r}
+fit_my_lm <- function(mydf) {
+  lm(mass ~ height, data = mydf)
+}
+
+starwars |> 
+  drop_na(mass, height, gender) |> 
+  nest(my_data = -gender) |> 
+  mutate(my_model = map(my_data, fit_my_lm)) |> 
+  mutate(my_model = map(my_model, tidy)) |> 
+  unnest(my_model)
+```
+
+## Putting it all together
+
+from day 1
+
+```{r}
+library(tidyverse)
+
+my_iterations <- evals |> 
+  janitor::clean_names() |> 
+  nest(data = -gender) |> 
+  mutate(cor_age = map_dbl(data, \(data) cor(data$score, data$age))) |> 
+  mutate(cor_bty = map_dbl(data, \(data) cor(data$score, data$bty_avg)))  |> 
+  mutate(my_fit_bty = map(data, \(data) lm(score ~ bty_avg, data = data) |> 
+                            broom::tidy())) |> 
+  mutate(my_plot = map(data, \(data) ggplot(data, aes(bty_avg, score)) +
+                         geom_point(aes(color = age)) +
+                         geom_smooth(method = lm,
+                                     se = FALSE,
+                                     formula = y ~ x))) |>
+  mutate(my_plot = map2(my_plot, gender, \(my_plot, gender) my_plot +
+                          labs(title = str_to_title(gender))))  |> 
+  mutate(my_plot_age = map(data, \(x) {
+    x |> 
+      ggplot(aes(age, score)) +
+      geom_point(aes(color = age)) +
+      geom_smooth(method = glm,
+                  se = FALSE,
+                  formula = y ~ x)
+    })) |> 
+  mutate(my_plot_age = map2(my_plot_age, gender, \(x, y) {
+    x +
+      labs(title = str_to_title(y))
+  }))
+
+my_iterations
+```
+
+```{r}
+#| label: myplots
+my_iterations |> pull(my_plot)
+my_iterations |> pull(my_plot_age)
+```
+
+### different data
+
+One more example of tidying model output with {broom}.
+
+```{r}
+lm(mass ~ height, data = starwars) 
+lm(mass ~ height, data = starwars) |>  summary()
+
+lm(mass ~ height, data = starwars) |> 
+  broom::tidy()
+
+lm(mass ~ height, data = starwars) |> 
+  broom::glance()
+```
+
+## Drawing a regression line with the fitted data
+
+```{r}
+score_model$fitted.values |> 
+  head()
+```
+
+### {broom} augment
+
+The fitted values can also be accessed via `broom::augment()`
+
+`.fitted` & `.residuals`
+
+```{r}
+#| label: regression-from-fitted
+fit <- lm(mpg ~ wt, data = mtcars)
+
+tidy(fit)
+tidy_fit <- augment(fit) 
+tidy_fit
+
+mtcars |> 
+  ggplot(aes(x = wt, y = mpg)) +
+  geom_point() +
+  geom_line(data = tidy_fit, aes(y = .fitted), color = "red") +
+  labs(title = "Regression of MPG on Weight",
+       x = "Weight",
+       y = "MPG")
+```
+
+## Tidymodels (Prediction) / *statistical learning*
+
+> Different from inference, prediction will often fit many models. To avoid copy/paste inefficiencies and barriers, we'll want to leverage iteration. Enter {purrr} and {tidymodels} --- @alexander2023
+
+The tidymodels package is designed to **scale well ; enable thinking about overfitting ; support *model* evaluation**. As with the grammars of {dplyr} (data wrangling) and {ggplot} (graphics / visualization), {tidymodels} has a "grammar that allows us to easily fit a variety of models" [@alexander2023]
+
+```{r}
+#| warning: false
+#| message: false
+library(tidymodels)
+# library(arrow)
+```
+
+import parquet data from Github
+
+```{r}
+foo_df <- arrow::read_parquet("https://github.com/RohanAlexander/telling_stories/raw/main/outputs/data/running_data.parquet")
+```
+
+When we focus on prediction we worry about over-fitting because over-fitting diminishes the veracity and validity of our claims. A partial mitigation is **spliting our data** to create training and test datasets. 80% of our data is for **training** to estimate the parameters of our model (inform our estimates of the coefficients). The **testing data** will be used to evaluate our model. Then we use the test-training split to enable the opportunity to build an appropriate model.
+
+Training data must not bleed into test data. This is called leakage.
+
+```{r}
+# sim_run_data <- 
+#   read_parquet(file = "outputs/data/running_data.parquet")
+sim_run_data <- foo_df
+
+set.seed(853)
+
+sim_run_data_split <-
+  initial_split(
+    data = sim_run_data,
+    prop = 0.80
+  )
+
+sim_run_data_split
+```
+
+```{r}
+sim_run_data_train <- training(sim_run_data_split)
+sim_run_data_test <- testing(sim_run_data_split)
+
+sim_run_data_test |> head()
+```
+
+### STEPS
+
+specify a model. In this case `linear_reg()`
+
+1.  specify the type of linear regression with `set_engine()`. In this case *multiple linear regression*
+2.  specify the fit `fit()`.
+
+> While this requires considerably more infrastructure than the base R approach detailed above, the advantage of this approach is that it can be used to fit many models
+
+```{r}
+sim_run_data_first_model_tidymodels <-
+  linear_reg() |>
+  set_engine(engine = "lm") |>
+  fit(
+    marathon_time ~ five_km_time + was_raining,
+    data = sim_run_data_train
+  )
+```
+
+```{r}
+sim_run_data_first_model_tidymodels |> 
+  tidy()
+```
+
+Can also use {tidymodels} for logistic regression (classification models) ; Poisson regression.
+
+See Also: [Parsnip](https://parsnip.tidymodels.org/)- a unified interface to models that can be used. Try out a range of models
+
+See Also: [recipes](https://recipes.tidymodels.org/)
+
+See Also: [workflows](https://workflows.tidymodels.org/)
+
+See Also: [tune](https://tune.tidymodels.org/)
+
+See Also: [yardstick](https://yardstick.tidymodels.org/)
+
+### k-fold cross-validation
+
+Evaluate a model with resampling, a method that can address prediction problems resulting from small datasets.
+
+-   <https://www.tidymodels.org/start/resampling/#resampling>
+
+-   aka [V-fold corss-validation](https://rsample.tidymodels.org/reference/vfold_cv.html) using {[rsample](https://rsample.tidymodels.org/)}
+
+### Poisson regression
+
+-   <https://tellingstorieswithdata.com/27-prediction.html#poisson-regression>
+
+### Lasso regression
+
+-   LASSO Regression using tidymodels and *The Office - [Silge blog](https://juliasilge.com/blog/lasso-the-office/)*
+
+-   A first model: [Penalized Logistic Regression](https://www.tidymodels.org/start/case-study/#first-model)
+
+-   <https://tellingstorieswithdata.com/27-prediction.html>

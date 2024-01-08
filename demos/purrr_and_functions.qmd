@@ -1,0 +1,240 @@
+---
+title: "Purrr and functions"
+subtitle: 'Part 2: tidy data for functional programming and iteration'
+author: 
+  name: "John Little"
+  orcid: 0000-0002-3600-0972
+  affiliation:
+    - name: Duke University Libraries
+      department: Center for Data & Visualization Sciences
+      city: Durham
+      state: NC
+      country: US
+      url:  https://library.duke.edu/data
+institute: "Center for Data & Visualization Sciences"
+date: today
+
+format: 
+  revealjs:
+    theme: moon
+    self-contained: true
+    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
+    logo: images/rfun_logo.png
+license: "CC BY"
+editor: visual
+---
+
+# Review
+
+## Last week
+
+-   **Tall** versus **wide** data frames (tibbles)
+    -   **Why?** iterate row-by-row without FOR Loops
+        -   Example: `ggplot2::facet_wrap()`
+    -   **How?** `tidyr::pivot_longer()` \| `tidyr::pivot_wider()`
+
+## Summary Review
+
+R can feel like a different galaxy
+
+::: columns
+::: {.column width="50%"}
+-   Day 1. Importing data and orientation to R / RStudio / Quarto
+
+-   Day 2. Using verbs, i.e. {dplyr} **functions**, to subset and wrangle data
+
+    -   *grammar of data*
+:::
+
+::: {.column width="50%"}
+-   Day 3. Using {ggplot2}
+
+    -   *grammar of graphics*
+
+-   Day 4. *gai*-assisted coding
+
+-   Day 5. pivot and join
+
+    -   Tall data so I don't have to write a FOR Loop
+
+-   Day 6. iteration and functions
+:::
+:::
+
+# Functions
+
+## What is R
+
+-   A data-first, **functional**, programming language
+
+-   **Functional programming languages** mean you don't have to write FOR loops
+
+-   **Rule of Thumb**: If you compose an expression **three or more times**, write a function
+
+## Everything in R
+
+\
+
+> Every object is either a **vector** or a **function**
+
+\
+
+```{r}
+#| eval: false
+#| echo: true
+
+my_vector <- 7:14   # a numeric vector
+dplyr::select()     # A function from the dplyr package
+
+```
+
+## Vectors are data
+
+All data are vectors
+
+### Data types
+
+-   Vectors
+
+-   Data Frames (i.e. Tibbles) are 2 dimensional vectors
+
+-   Lists
+
+-   Matrices
+
+## Many Tidyverse functions are iterable
+
+\
+Many tidyverse functions are "vectorized" and can be invoked with an implied FOR loops
+
+\
+
+```{r}
+#| eval: false
+#| echo: true
+library(tidyverse)
+
+starwars |> 
+  mutate(name_lc = str_to_lower(name), .after = name)
+```
+
+## What is a FOR Loop
+
+\
+
+A flow *control-flow-statement*
+
+\
+
+```{r}
+#| eval: false
+#| echo: true
+
+for (variable in sequence) {
+    expression
+}
+```
+
+## Custom Functions
+
+\
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1-3,5,6,8"
+add_numbers <- function(x, y) {
+  x + y
+}
+
+starwars |> 
+  select(where(is.numeric)) |> 
+# mutate(my_sum = height + mass)  
+  mutate(my_sum = add_numbers(height, mass)) 
+```
+
+\
+
+[♠]{style="color: #636363; font-size: 1.25em; display: grid; justify-content: center;"}
+
+## Environment variables and data variabls
+
+```{r}
+#| echo: true
+#| eval: false
+
+make_scatterplot_with_vars <- function(my_df, my_x, my_y) {
+  my_df |> 
+    ggplot(aes({{my_x}}, {{my_y}})) + 
+    geom_point()
+}
+
+starwars |> 
+  filter(mass < 500) |> 
+  make_scatterplot_with_vars(my_x = height, my_y = mass)
+
+starwars |> 
+  filter(mass < 500) |> 
+  make_scatterplot_with_vars(height, birth_year)
+
+cars |> 
+  make_scatterplot_with_vars(speed, dist)
+```
+
+## Abstracting the function
+
+In the tidyverse context we have to take into account **data masking** by **indirectly embracing** data variables
+
+-   **Environment** variables show up in the Environment tab
+-   **Data** variables are columns in a data frame
+
+# {Purrr}
+
+## `map()`
+
+\
+
+Apply a function to each element of a vector or list
+
+\
+Can also do this in Base-R with `apply()`, `sapply()`, `mapply()`, `lapply()`
+
+## `nest()`
+
+::: columns
+::: {.column width="50%"}
+```{r}
+library(tidyverse)
+library(gt)
+library(gtExtras)
+
+starwars |> 
+  select(name, gender, height, mass) |> 
+  gt::gt_preview(top_n = 8) |> 
+  gtExtras::gt_theme_dark()
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+starwars |> 
+  select(name, gender, height, mass) |> 
+  nest(my_data_by_gender = -gender) 
+```
+
+\
+
+```{r}
+starwars |> 
+  select(name, gender, height, mass) |> 
+  nest(my_data_by_gender = -gender) |> 
+  filter(gender == "feminine") |> 
+  unnest(my_data_by_gender) |> 
+  gt() |> 
+  gt::gt_preview(top_n = 3) |> 
+  gtExtras::gt_theme_dark()
+```
+:::
+:::

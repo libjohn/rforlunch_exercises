@@ -1,0 +1,525 @@
+---
+title: "Pivot and Join"
+subtitle: 'Part 1: tidy data for functional programming and iteration'
+author: 
+  name: "John Little"
+  orcid: 0000-0002-3600-0972
+  affiliation:
+    - name: Duke University Libraries
+      department: Center for Data & Visualization Sciences
+      city: Durham
+      state: NC
+      country: US
+      url:  https://library.duke.edu/data
+institute: "Center for Data & Visualization Sciences"
+date: today
+
+format: 
+  revealjs:
+    theme: moon
+    self-contained: true  
+    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
+    logo: images/rfun_logo.png
+license: "CC BY"
+editor: visual
+---
+
+# Tidy data
+
+## Tidy data[^1] {background-image="images/tidy_data.png" background-size="contain" background-repeat="false"}
+
+[^1]: A robust discussion of *tidy data* can be found in *R for Data Science* ([Wickham, Çetinkaya-Rundel, and Grolemund 2023](https://intro2r.library.duke.edu/longer_wider#ref-wickham2023))*: [https://r4ds.had.co.nz/tidy-data.html](https://r4ds.had.co.nz/tidy-data.htmlhttps://r4ds.had.co.nz/tidy-data.html)*
+
+## Wide data
+
+```{r}
+#| message: false
+#| warning: false
+#| code-line-numbers: "4"
+#| echo: true
+#| code-fold: true
+library(tidyverse)
+library(gt)
+library(gtExtras)
+
+tidyr::relig_income |> 
+  gt::gt_preview() |> 
+  gtExtras::gt_theme_dark()
+```
+
+## Tall data
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| code-line-numbers: 2-4
+#| echo: true
+#| code-fold: true
+relig_income |> 
+  pivot_longer(cols = -religion, 
+               names_to = "income_category", 
+               values_to = "income") |> 
+  gt::gt_preview() |> 
+  gtExtras::gt_theme_dark()
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+#| code-line-numbers: "2,7-9,11"
+#| echo: true
+#| code-fold: true
+#| fig-height: 8
+relig_income |> 
+  pivot_longer(cols = -religion, 
+               names_to = "income_category", 
+               values_to = "income") |> 
+  mutate(religion = fct_relevel(religion, "Evangelical Prot", "Mainline Prot", "Catholic", "Unaffiliated", "Historically Black Prot")) |> 
+  mutate(income_category = fct_rev(as_factor(income_category))) |>
+  ggplot(aes(income, income_category)) +
+  geom_col(fill = "#eee8d5") +
+  facet_wrap(vars(
+    fct_other(
+      religion, 
+      keep = c("Evangelical Prot", "Mainline Prot", "Catholic", "Unaffiliated", "Historically Black Prot")))) +
+  theme(plot.background = element_rect(fill = "#002b36"),
+        text = element_text(color = "#eee8d5"),
+        axis.text = element_text(color = "#eee8d5"), 
+        panel.background = element_rect(fill = "#002b36"),
+        panel.grid = element_line(color = "#002b36"),
+        strip.background = element_rect(fill = "#7b9c9f"))
+                                 
+```
+:::
+:::
+
+## Code
+
+ \
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "2,5|3-4"
+relig_income |> 
+  pivot_longer(cols = -religion, names_to = "income_category") |> 
+  ggplot(aes(value, income_category)) +
+  geom_col() +
+  facet_wrap(vars(religion))
+```
+
+# Pivot
+
+## { tidyr }
+
+\
+
+::: columns
+::: {.column width="50%"}
+`tidyr::pivot_longer()`
+:::
+
+::: {.column width="50%"}
+`tidyr::pivot_wider()`
+:::
+:::
+
+[![](images/pivot_longer_smaller.gif)](https://github.com/apreshill/teachthat/blob/master/pivot/pivot_longer_smaller.gif)
+
+::: {style="color: dimgray; font-size: 35%; text-align: center;"}
+Image Credit: apreshill \| CC BY 4.0 \| https://github.com/apreshill/teachthat/blob/master/pivot/pivot_longer_smaller.gif\]
+:::
+
+# Join
+
+## { dplyr }
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: false
+
+fav_ratings  |>  
+  left_join(starwars, 
+            by = join_by(name)) 
+```
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+![](images/join_diagram.png){.absolute top="0" right="10"}
+
+## Two datasets
+
+::: columns
+::: {.column width="50%"}
+538.com
+
+```{r}
+fav_rating_df <- readr::read_csv("data/538_favorability_popularity.csv", skip = 11) |> 
+  gt::gt_preview(top_n = 8) |> 
+  gtExtras::gt_theme_dark() |> 
+    data_color(
+    columns = "fav_rating",
+    palette = "#D77D4C"
+  ) |> 
+  gtExtras::gt_theme_dark() |> 
+    data_color(
+    columns = "name",
+    palette = "#6A57C1"
+  ) |> 
+  tab_spanner(
+    label = "LH join key",
+    columns = "name",
+    id = "my_key"
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#6A57C1"),
+    locations = cells_column_spanners(spanners = "my_key")
+  ) |>
+  tab_style(
+    style = cell_text(color = "#eee8d5"),
+    locations = cells_column_spanners(spanners = "my_key")
+  ) |>
+    data_color(
+    columns = name,
+    palette = "#6A57C1"
+  )
+fav_rating_df
+```
+:::
+
+::: {.column width="50%"}
+{ dplyr::starwars }
+
+```{r}
+my_sw_df <- dplyr::starwars |> 
+  select(name, height, mass, gender, homeworld) |> 
+  gt::gt_preview(top_n = 8) |> 
+  gtExtras::gt_theme_dark() |> 
+  data_color(
+    columns = c(name, height, mass, gender, homeworld),
+    palette = "#AFC366"
+  ) |> 
+  tab_spanner(
+    label = "RH join key",
+    columns = "name",
+    id = "my_key"
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#6A57C1"),
+    locations = cells_column_spanners(spanners = "my_key")
+  ) |>
+  tab_style(
+    style = cell_text(color = "#eee8d5"),
+    locations = cells_column_spanners(spanners = "my_key")
+  ) |>
+    data_color(
+    columns = name,
+    palette = "#6A57C1"
+  )
+my_sw_df
+```
+:::
+:::
+
+::: columns
+::: {.column width="50%" style="font-size: 30%; color: dimgray;"}
+Data gathered then transformed from<br> https://github.com/fivethirtyeight/data/tree/master/star-wars-survey
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+## joined data
+
+```{r}
+fav_ratings <- readr::read_csv("data/538_favorability_popularity.csv", skip = 11) 
+# fav_ratings <- fav_rating_df
+```
+
+::: columns
+::: {.column width="45%"}
+One data frame
+
+<br>
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+fav_ratings  |>  
+  left_join(starwars, 
+            by = join_by(name))  
+```
+:::
+
+::: {.column width="55%"}
+```{r}
+fav_ratings |> 
+  dplyr::left_join(starwars, join_by(name)) |> 
+  select(name, fav_rating, height, mass, gender, homeworld) |> 
+  gt::gt() |> 
+  data_color(
+    columns = fav_rating,
+    palette = "#D77D4C"
+  ) |> 
+  data_color(
+    columns = c(height, mass, gender, homeworld),
+    palette = "#AFC366"
+  ) |> 
+  data_color(
+    columns = "name",
+    palette = "#6A57C1"
+  ) |> 
+  tab_spanner(
+    label = "Target data-frame",
+    columns = c(height, mass, gender, homeworld),
+    id = "sw_target"
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#AFC366"), 
+    locations = cells_column_spanners(spanners = "sw_target")
+  ) |> 
+  tab_style(
+    style = cell_text(color = "black"),
+    locations = cells_column_spanners(spanners = "sw_target")
+  ) |> 
+  tab_spanner(
+    label = "Source df",
+    columns = fav_rating,
+    id = "source_join"
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#D77D4C"), 
+    locations = cells_column_spanners(spanners = "source_join")
+  ) |> 
+  tab_style(
+    style = cell_text(color = "#eee8d5"),
+    locations = cells_column_spanners(spanners = "source_join")
+  ) |>   
+  tab_spanner(
+    label = "Join key",
+    columns = name,
+    id = "key"
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#6A57C1"), 
+    locations = cells_column_spanners(spanners = "key")
+  ) |> 
+  tab_style(
+    style = cell_text(color = "#eee8d5"),
+    locations = cells_column_spanners(spanners = "key")
+  ) |>   
+  gtExtras::gt_theme_dark()
+```
+:::
+:::
+
+## `anti_join()`
+
+Identifying what does not match
+
+```{r}
+nomatch_favrating <- anti_join(fav_ratings, starwars) |> 
+  arrange(str_extract(name, "\\w+$")) |> 
+  select(name) |> 
+  rename(fav_rating_key = name)
+
+
+nomatch_starwars <- starwars %>% 
+  filter(str_detect(name, 
+                    regex("3p|palpatine|obi|amidala|leia|d2", 
+                          ignore_case = TRUE))) %>% 
+  select(name) |> 
+  arrange(str_extract(name, "\\w+$")) |> 
+  rename(starwars_key = name)
+
+key_examples_df <- bind_cols(nomatch_favrating, nomatch_starwars) 
+
+key_examples_df_gt <- key_examples_df |> 
+  gt() |>
+  gtExtras::gt_theme_dark() |> 
+    data_color(
+    columns = fav_rating_key,
+    palette = "#D77D4C"
+  ) |>
+  data_color(
+    columns = starwars_key,
+    palette = "#AFC366"
+  ) |> 
+    tab_spanner(
+    label = "Source df",
+    columns = fav_rating_key,
+    id = "source_join"
+  ) |>
+  tab_style(
+    style = cell_fill(color = "#D77D4C"),
+    locations = cells_column_spanners(spanners = "source_join")
+  ) |> 
+  tab_spanner(
+    label = "Target df",
+    columns = starwars_key,
+    id = "target_join"
+  ) |>
+  tab_style(
+    style = cell_fill(color = "#AFC366"),
+    locations = cells_column_spanners(spanners = "target_join")
+  )
+
+key_examples_df_gt
+```
+
+## `anti_join()`
+
+Mutate and regex to modify left-hand side
+
+```{r}
+key_examples_df_gt <- key_examples_df |> 
+  mutate(regex_modified_key_lh = str_remove_all(str_to_lower(fav_rating_key), "[ \\-]"),
+         .after = fav_rating_key) 
+
+key_examples_df_gt <- key_examples_df_gt |> 
+  gt() |>
+  gtExtras::gt_theme_dark() |> 
+    data_color(
+    columns = fav_rating_key,
+    palette = "#D77D4C"
+  ) |>
+  data_color(
+    columns = starwars_key,
+    palette = "#AFC366"
+  ) |> 
+    tab_spanner(
+    label = "Source df",
+    columns = fav_rating_key,
+    id = "source_join"
+  ) |>
+  tab_style(
+    style = cell_fill(color = "#D77D4C"),
+    locations = cells_column_spanners(spanners = "source_join")
+  ) |> 
+  tab_spanner(
+    label = "Target df",
+    columns = starwars_key,
+    id = "target_join"
+  ) |>
+  tab_style(
+    style = cell_fill(color = "#AFC366"),
+    locations = cells_column_spanners(spanners = "target_join")
+  ) |> 
+  data_color(
+    columns = regex_modified_key_lh,
+    palette = "#6A57C1"
+  )
+
+key_examples_df_gt
+```
+
+## `anti_join()`
+
+Mutate and regex to modify right-hand side
+
+```{r}
+key_examples_df_gt <- key_examples_df |> 
+  mutate(regex_modified_key_lh = str_remove_all(str_to_lower(fav_rating_key), "[ \\-]"),
+         .after = fav_rating_key) |> 
+  mutate(regex_modified_key_rh = str_remove_all(str_to_lower(starwars_key), "[ \\-]"),
+         .before = starwars_key)
+
+key_examples_df_gt <- key_examples_df_gt |>
+  gt() |> 
+  gtExtras::gt_theme_dark() |> 
+    data_color(
+    columns = fav_rating_key,
+    palette = "#D77D4C"
+  ) |>
+  data_color(
+    columns = starwars_key,
+    palette = "#AFC366"
+  ) |> 
+    tab_spanner(
+    label = "Source df",
+    columns = c(fav_rating_key, regex_modified_key_lh),
+    id = "source_join"
+  ) |>
+  tab_style(
+    style = cell_fill(color = "#D77D4C"),
+    locations = cells_column_spanners(spanners = "source_join")
+  ) |> 
+  tab_spanner(
+    label = "Target df",
+    columns = c(regex_modified_key_rh, starwars_key),
+    id = "target_join"
+  ) |>
+  tab_style(
+    style = cell_fill(color = "#AFC366"),
+    locations = cells_column_spanners(spanners = "target_join")
+  ) |> 
+  data_color(
+    columns = c(regex_modified_key_lh, regex_modified_key_rh),
+    palette = "#6A57C1"
+  ) 
+
+key_examples_df_gt
+```
+
+## `anti_join()`
+
+Incremental improvements
+
+```{r}
+key_examples_df_gt <- key_examples_df |> 
+  mutate(regex_modified_key_lh = str_remove_all(str_to_lower(fav_rating_key), "[ \\-]"),
+         .after = fav_rating_key) |> 
+  mutate(regex_modified_key_rh = str_remove_all(str_to_lower(starwars_key), "[ \\-]"),
+         .before = starwars_key) |> 
+  mutate(key_match = regex_modified_key_lh == regex_modified_key_rh, .after = regex_modified_key_lh)
+
+key_examples_df_gt <- key_examples_df_gt |> 
+  gt() |> 
+  gtExtras::gt_theme_dark() |> 
+    data_color(
+    columns = fav_rating_key,
+    palette = "#D77D4C"
+  ) |>
+  data_color(
+    columns = starwars_key,
+    palette = "#AFC366"
+  ) |> 
+    tab_spanner(
+    label = "Source df",
+    columns = c(fav_rating_key, regex_modified_key_lh),
+    id = "source_join"
+  ) |>
+  tab_style(
+    style = cell_fill(color = "#D77D4C"),
+    locations = cells_column_spanners(spanners = "source_join")
+  ) |> 
+  tab_spanner(
+    label = "Target df",
+    columns = c(regex_modified_key_rh, starwars_key),
+    id = "target_join"
+  ) |>
+  tab_style(
+    style = cell_fill(color = "#AFC366"),
+    locations = cells_column_spanners(spanners = "target_join")
+  ) |> 
+  data_color(
+    columns = c(regex_modified_key_lh, regex_modified_key_rh),
+    palette = "#6A57C1"
+  )
+
+key_examples_df_gt
+```
+
+## Hints on keys and regex
+
+-   Numeric keys are the best match keys
+-   Natural language keys are not good match keys
+-   Regular expressions can normalize keys to some extent
+-   {fuzzyjoin} package may help

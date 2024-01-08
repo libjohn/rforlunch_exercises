@@ -1,0 +1,183 @@
+---
+title: "Functions"
+author: 
+  name: "John Little"
+  orcid: 0000-0002-3600-0972
+  affiliation:
+    - name: Duke University Libraries
+      department: Center for Data & Visualization Sciences
+      city: Durham
+      state: NC
+      country: US
+      url:  https://library.duke.edu/data
+institute: "Center for Data & Visualization Sciences"
+date: today
+
+format: 
+  html:
+    self-contained: true
+    toc: true
+    license: CC BY
+---
+
+This document is excerpted from
+
+-   [Functions in R](https://intro2r.library.duke.edu/functions)
+
+-   [Iteration with {purrr}](https://intro2r.library.duke.edu/purrr)
+
+R is a functional programming language
+
+A function can look like this
+
+```{r}
+add_numbers <- function(x, y) {
+  x + y
+}
+```
+
+Now, apply a function
+
+```{r}
+library(dplyr)
+
+cars |> 
+  mutate(new_number = add_numbers(speed, dist))
+```
+
+## Rule of Thumb
+
+> If you write the same code three or more times, turn that code into a function
+
+### Example with simple function
+
+```{r}
+make_scatterplot <- function(my_df) {
+  my_df |> 
+    ggplot(aes(height, mass)) + 
+    geom_point()
+}
+```
+
+```{r}
+library(tidyverse)
+data("starwars")
+
+starwars |> 
+  make_scatterplot()
+```
+
+### Abstracting the function
+
+In the tidyverse context we have to take into account data masking by indirectly embracing data variables
+
+-   **Environment variables** show up in the Environment tab
+
+-   **Data variables** are columns in a data frame.
+
+```{r}
+make_scatterplot_with_vars <- function(my_df, my_x, my_y) {
+  my_df |> 
+    ggplot(aes({{my_x}}, {{my_y}})) + 
+    geom_point()
+}
+```
+
+```{r}
+starwars |> 
+  filter(mass < 500) |> 
+  make_scatterplot_with_vars(my_x = height, my_y = mass)
+
+starwars |> 
+  filter(mass < 500) |> 
+  make_scatterplot_with_vars(height, birth_year)
+
+cars |> 
+  make_scatterplot_with_vars(speed, dist)
+```
+
+## Setup for {purrr}
+
+```{r}
+starwars |> 
+  make_scatterplot()
+
+my_plot <- starwars |> 
+  filter(mass < 500) |> 
+  make_scatterplot()
+
+# my_plot
+# 
+# my_plot +
+#   geom_smooth(method = lm, se = FALSE, formula = y ~ x) +
+#   facet_wrap(vars(gender))
+```
+
+## Purrr
+
+Iteration without for loops
+
+```{r}
+starwars |> 
+  filter(mass < 500) |> 
+  nest(my_tibble = -gender) 
+  # mutate(my_plot = map(my_tibble, make_scatterplot)) |>
+  # pull(my_plot)
+
+# starwars |> 
+#   filter(mass < 500) |> 
+#   nest(data = -gender) |> 
+#   mutate(my_plot = map(data, make_scatterplot)) |> 
+#   mutate(my_plot_w_title = map2(my_plot, gender, function(x, y) {
+#     x +
+#       ggtitle(str_to_title(y))
+#     }
+#   )) |> 
+#   pull(my_plot_w_title)
+```
+
+### broom and linear regression
+
+```{r}
+starwars |>
+  select(name, gender, mass, height)
+
+my_model <-  lm(mass ~ height, data = starwars)
+```
+
+### base-R
+
+```{r}
+my_model
+```
+
+```{r}
+summary(my_model)
+```
+
+```{r}
+my_model$coefficients
+```
+
+```{r}
+broom::tidy(my_model)
+```
+
+```{r}
+broom::glance(my_model)
+```
+
+### purrr, broom, and linear regression
+
+```{r}
+starwars |>
+  select(name, gender, mass, height) |> 
+  nest(my_data = -gender) |> 
+  mutate(my_model = map(my_data, function(x) {
+    lm(mass ~ height, data = x) 
+  }
+  )) 
+  # mutate(my_tidy_model = map(my_model, broom::tidy)) |> 
+  # unnest(my_tidy_model)|> 
+  # filter(term != "(Intercept)")
+```
