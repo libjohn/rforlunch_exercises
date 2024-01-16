@@ -1,0 +1,305 @@
+---
+title: "R for Lunch"
+subtitle: 'Import data and install RStudio / Tidyverse'
+author: 
+  name: "John Little"
+  orcid: 0000-0002-3600-0972
+  affiliation:
+    - name: Duke University Libraries
+      department: Center for Data & Visualization Sciences
+      city: Durham
+      state: NC
+      country: US
+      url:  https://library.duke.edu/data
+institute: "Center for Data & Visualization Sciences"
+date: today
+
+format: 
+  revealjs:
+    theme: moon
+    self-contained: true  
+    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
+    logo: images/rfun_logo.png
+license: "CC BY"
+editor: visual
+---
+
+## Today's topics
+
+-   How to import data
+
+-   Tour of RStudio IDE
+
+-   Coding Notebooks
+
+Preceded by [where to download RStudio and R](https://posit.co/download/rstudio-desktop/ "Google: "download RStudio"")
+
+## Housekeeping
+
+-   Drew / Lauren / breakout rooms
+-   CDVS
+    -   Themes
+        -   Data Management (Reproducibility)
+        -   Data Science
+        -   Data Visualization
+        -   GIS and Spatial Analysis
+        -   Data Sources
+
+## Housekeeping continued
+
+-   Website - <https://library.duke.edu/data>
+-   Workshops
+    -   <https://library.duke.edu/data/workshops>
+-   Consulting in the Lab
+    -   askData\@duke.edu
+    -   my schedule: <https://is.gd/littleconsult>
+
+## R for Lunch as a series
+
+R for Lunch is a series that meets 8 times (till EOM Feb.) After today it will meet regularly on Thursdays at noon.
+
+-   Sign-up for each workshop individually
+
+-   Each episode has a unique zoom link
+
+## Eat yor own dog food
+
+\
+Modele how R can work for practical reproducible workflows
+
+-   Code in RStudio
+
+-   One kind of report are these slides ([GitHub](https://github.com/libjohn/rforlunch_exercises/tree/main))
+
+-   Another report is the [*Introduction to R/Tidyverse/Quarto* text](https://intro2r.library.duke.edu/).
+
+# Definitions
+
+## **R/Tidyverse/Quarto**
+
+**R/Tidyverse/Quarto** represents the state of the art for practical reproducibility
+
+## R
+
+R is a data-first programming language
+
+### **RStudio** is an IDE
+
+## Reproducibility
+
+-   Independently and transparently you can achieve reliable results with the same data and the same workflow
+-   Best way to be transparent with your work is to make sure it can be reproduced
+-   Best workflow and ecosystem to achieve reproducible work is to "*do everything with code*"
+    -   Import data, analyze, visualize, and publish/share
+
+## Tidyverse
+
+-   An opinionated set of packages for data manipulation and analysis
+
+-   A meta-package of eight symbiotic packages
+
+### Packages
+
+-   Extend R into your subject domain
+
+-   And/or make it easier to accomplish a computational task
+
+-   There are thousands
+
+    -   MetaCran, Cran, Bioconductor, GitHub
+
+## Quarto
+
+works with R and Python
+
+-   A scientific publishing workflow
+    -   dashboards, manuscripts, MSWord, slides, website, e-book, PDF
+-   **Coding Notebooks**: structure our code interspersed with explanatory text. When combined and run, will generate reproducible reports that can be shared.
+-   A next-gen (or modern) Markdown
+
+## Opinionated
+
+ 
+
+> Tidyverse and Quarto is the most practical and developed, reproducible, scientific analysis and publishing workflow available.
+
+# Tidy data
+
+## Tidy data[^1] {background-image="images/tidy_data.png" background-size="contain" background-repeat="false"}
+
+[^1]: A robust discussion of *tidy data* can be found in *R for Data Science* ([Wickham, Çetinkaya-Rundel, and Grolemund 2023](https://intro2r.library.duke.edu/longer_wider#ref-wickham2023))*: [https://r4ds.had.co.nz/tidy-data.html](https://r4ds.had.co.nz/tidy-data.htmlhttps://r4ds.had.co.nz/tidy-data.html)*
+
+## Tidy data
+
+-   Every row is a single observation
+-   Every column is a variable
+-   The cells are single data values
+
+## Wide data
+
+```{r}
+#| message: false
+#| warning: false
+#| code-line-numbers: "4"
+#| echo: true
+#| code-fold: true
+library(tidyverse)
+library(gt)
+library(gtExtras)
+
+tidyr::relig_income |> 
+  gt::gt_preview() |> 
+  gtExtras::gt_theme_dark()
+```
+
+## Tall data
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| code-line-numbers: 2-4
+#| echo: true
+#| code-fold: true
+relig_income |> 
+  pivot_longer(cols = -religion, 
+               names_to = "income_category", 
+               values_to = "income") |> 
+  gt::gt_preview() |> 
+  gtExtras::gt_theme_dark()
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+#| code-line-numbers: "2,7-9,11"
+#| echo: true
+#| code-fold: true
+#| fig-height: 8
+relig_income |> 
+  pivot_longer(cols = -religion, 
+               names_to = "income_category", 
+               values_to = "income") |> 
+  mutate(religion = fct_relevel(religion, "Evangelical Prot", "Mainline Prot", "Catholic", "Unaffiliated", "Historically Black Prot")) |> 
+  mutate(income_category = fct_rev(as_factor(income_category))) |>
+  ggplot(aes(income, income_category)) +
+  geom_col(fill = "#eee8d5") +
+  facet_wrap(vars(
+    fct_other(
+      religion, 
+      keep = c("Evangelical Prot", "Mainline Prot", "Catholic", "Unaffiliated", "Historically Black Prot")))) +
+  theme(plot.background = element_rect(fill = "#002b36"),
+        text = element_text(color = "#eee8d5"),
+        axis.text = element_text(color = "#eee8d5"), 
+        panel.background = element_rect(fill = "#002b36"),
+        panel.grid = element_line(color = "#002b36"),
+        strip.background = element_rect(fill = "#7b9c9f"))
+                                 
+```
+:::
+:::
+
+## Code
+
+ \
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "2,5|3-4"
+relig_income |> 
+  pivot_longer(cols = -religion, names_to = "income_category") |> 
+  ggplot(aes(value, income_category)) +
+  geom_col() +
+  facet_wrap(vars(religion))
+```
+
+::: {style="color: dimgray; font-size: 35%; text-align: center;"}
+Image Credit: apreshill \| CC BY 4.0 \| https://github.com/apreshill/teachthat/blob/master/pivot/pivot_longer_smaller.gif\]
+:::
+
+# Polls
+
+# Grammar
+
+By next week you'll have the basic building blocks to
+
+-   Leverage reproducible data workflows: import data, analyze data, and generate visualizations.
+
+Along the way
+
+-   Rendering reproducible reports (Quarto)
+
+-   Practical techniques
+
+<!-- -->
+
+-   Pro-tips that comprise a fluency of reproducible data analysis
+
+## We're here to help
+
+-   askData\@duke.edu
+
+-   https://library.duke.edu/data
+
+-   https://is.gd/littleconsult
+
+# Let's do it
+
+## Three things for today
+
+-   Tour of the RStudio IDE (Projects)
+
+-   How to import data following
+
+-   Coding notebooks
+
+## Exercises
+
+1.  https://intro2r.library.duke.edu/ \> Exercises \> Link out \> Green [**Code**]{style="color:green"} button \> Download ZIP
+
+2.  Then, Unzip (i.e. Expand) the folder (on your local file system)
+
+3.  Then, double click the `rforlunch_exercises.Rproj` file
+
+4.  From **RStudio** the Files tab, open the `00_import_answers.qmd`
+
+    -   The answer file is in the **RStudio** `rforlunch_exercises` project \> `Files Tab > Answers folder`
+
+# Closing
+
+## Pipes and Assignments
+
+ 
+
++----------+---------------+--------------+-------------------+
+| Operator | Operator Name | Keystore     | Pnuemonic         |
++==========+===============+==============+===================+
+| `<-`     | assignment    | Alt-dash     | "Gets value from" |
++----------+---------------+--------------+-------------------+
+| `|>`\    | pipe          | Ctrl-Shift-M | "And then"        |
+| or       |               |              |                   |
+|          |               |              |                   |
+| `%>%`    |               |              |                   |
++----------+---------------+--------------+-------------------+
+
+## Citation management
+
+ 
+
+RStudio \> Quarto Notebook \> Insert \> Citation
+
+Example DOI: 10.18637/jss.v059.i10
+
+## ai-paired coding
+
+ 
+
+-   Data science concepts: **Microsoft copilot** ("More precise" setting)
+
+-   Code completion: **GitHub copilot** and RStudio (IDE) or VSCode (IDE)
+
+## Bye for now
+
+-   askData\@duke.edu
+-   <https://is.gd/littleconsult>
+-   <https://library.duke.edu/data>
