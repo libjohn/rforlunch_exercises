@@ -30,7 +30,7 @@ editor: visual
 
 -   Tour of RStudio IDE
 
--   Coding Notebooks
+-   Coding notebooks
 
 Preceded by [where to download RStudio and R](https://posit.co/download/rstudio-desktop/ "Google: "download RStudio"")
 
@@ -39,10 +39,14 @@ Preceded by [where to download RStudio and R](https://posit.co/download/rstudio-
 -   Drew / Lauren / breakout rooms
 -   CDVS
     -   Themes
-        -   Data Management (Reproducibility)
+        -   Data Management [(Plans, Reproducibility, Repositories)]{style="font-size: large; color: gray;"}
+
         -   Data Science
+
         -   Data Visualization
+
         -   GIS and Spatial Analysis
+
         -   Data Sources
 
 ## Housekeeping continued
@@ -65,11 +69,11 @@ R for Lunch is a series that meets 8 times (till EOM Feb.) After today it will m
 ## Eat yor own dog food
 
 \
-Modele how R can work for practical reproducible workflows
+Model how R can work for practical reproducible workflows
 
 -   Code in RStudio
 
--   One kind of report are these slides ([GitHub](https://github.com/libjohn/rforlunch_exercises/tree/main))
+-   One kind of report is these slides ([GitHub](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/slides_import-data.pdf "PDF report - slides"))
 
 -   Another report is the [*Introduction to R/Tidyverse/Quarto* text](https://intro2r.library.duke.edu/).
 
@@ -77,18 +81,26 @@ Modele how R can work for practical reproducible workflows
 
 ## **R/Tidyverse/Quarto**
 
+\
+
 **R/Tidyverse/Quarto** represents the state of the art for practical reproducibility
 
-## R
+## R & RStudio
 
-R is a data-first programming language
+\
 
-### **RStudio** is an IDE
+*R* is a data-first programming language
+
+\
+
+**RStudio** is an IDE
 
 ## Reproducibility
 
--   Independently and transparently you can achieve reliable results with the same data and the same workflow
--   Best way to be transparent with your work is to make sure it can be reproduced
+\
+
+-   Independently and transparently achieve reliable results with the same data and the same workflow
+    -   Transparenvy with reproducible workflows
 -   Best workflow and ecosystem to achieve reproducible work is to "*do everything with code*"
     -   Import data, analyze, visualize, and publish/share
 
@@ -106,15 +118,16 @@ R is a data-first programming language
 
 -   There are thousands
 
-    -   MetaCran, Cran, Bioconductor, GitHub
+    -   MetaCRAN, CRAN, BioConductor, GitHub
 
 ## Quarto
 
 works with R and Python
 
--   A scientific publishing workflow
+-   A scientific publishing system [(workflow)]{style="color: gray;"}
     -   dashboards, manuscripts, MSWord, slides, website, e-book, PDF
--   **Coding Notebooks**: structure our code interspersed with explanatory text. When combined and run, will generate reproducible reports that can be shared.
+-   **Coding Notebooks**: Code chunks interspersed with explanatory text [(Natural language)]{style="color: gray;"}
+    -   Render reproducible, shareable reports
 -   A next-gen (or modern) Markdown
 
 ## Opinionated
@@ -219,7 +232,7 @@ Image Credit: apreshill \| CC BY 4.0 \| https://github.com/apreshill/teachthat/b
 
 # Polls
 
-# Grammar
+# Grammar [(data and graphics)]{style="color: gray;"}
 
 By next week you'll have the basic building blocks to
 
@@ -235,7 +248,7 @@ Along the way
 
 -   Pro-tips that comprise a fluency of reproducible data analysis
 
-## We're here to help
+# We are here to help
 
 -   askData\@duke.edu
 
@@ -298,7 +311,7 @@ Example DOI: 10.18637/jss.v059.i10
 
 -   Code completion: **GitHub copilot** and RStudio (IDE) or VSCode (IDE)
 
-## Bye for now
+# Bye for now
 
 -   askData\@duke.edu
 -   <https://is.gd/littleconsult>
