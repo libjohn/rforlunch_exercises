@@ -21,6 +21,8 @@ library(tidyverse)
 
 b.  Import data
 
+Insert a code chunk with `/r` or `Ctrl + Alt + i` or click the green `+c` button (top of quarto notebook)
+
 ```{r}
 library(here)
 brodhead <- read_csv(here("data", "brodhead_center.csv"))

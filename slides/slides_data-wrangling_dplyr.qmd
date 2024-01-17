@@ -41,7 +41,7 @@ editor: visual
 ## Housekeeping
 
 -   Drew / Lauren / breakout rooms
--   CDVS
+-   [CDVS](https://library.duke.edu/data/ "Center for Data and Visualizations Sciences")
     -   Themes
         -   Data Management [(Plans, Reproducibility, Repositories)]{style="font-size: large; color: gray;"}
 
@@ -70,7 +70,7 @@ R for Lunch is a series that meets 8 times (till EOM Feb.) After today it will m
 
 -   Each episode has a unique zoom link
 
-## Eat yor own dog food
+## Eat your own dog food
 
 \
 Model how R can work for practical reproducible workflows
@@ -81,19 +81,28 @@ Model how R can work for practical reproducible workflows
 
 -   Another report is the [*Introduction to R/Tidyverse/Quarto* text](https://intro2r.library.duke.edu/).
 
-# Definitions
+## Pipes and Assignments
 
-### Opinionated
+ 
 
-> Tidyverse and Quarto is the most practical and well developed, reproducible, scientific analysis and publishing workflow available.
++--------------+---------------+--------------+-------------------+
+| Operator     | Operator Name | Keystore     | Pnuemonic         |
++==============+===============+==============+===================+
+| `<-`         | assignment    | Alt-dash     | "Gets value from" |
++--------------+---------------+--------------+-------------------+
+| `|>`\        | pipe          | Ctrl-Shift-M | "And then"        |
+| or           |               |              |                   |
+|              |               |              |                   |
+| `%>%`        |               |              |                   |
++--------------+---------------+--------------+-------------------+
 
-### Tidyverse and Tidy data is an important foundation.
+# Tidyverse and Tidy data
 
--   Every row is a single observation
--   Every column is a variable
--   The cells are single data values
+## Foundation
 
-# Tidy data
+ 
+
+Tidyverse and Quarto is the most practical and well developed, reproducible, scientific analysis and publishing workflow available.
 
 ## Tidy data[^1] {background-image="images/tidy_data.png" background-size="contain" background-repeat="false"}
 
@@ -189,6 +198,10 @@ Image Credit: apreshill \| CC BY 4.0 \| https://github.com/apreshill/teachthat/b
 
 # Polls
 
+## dplyr
+
+<https://intro2r.library.duke.edu/wrangle.html>
+
 # We are here to help
 
 -   askData\@duke.edu
@@ -217,7 +230,7 @@ Image Credit: apreshill \| CC BY 4.0 \| https://github.com/apreshill/teachthat/b
 
 4.  From **RStudio** the Files tab, open the `01_dplyr.qmd`
 
-    -   The answer file is in the **RStudio** `rforlunch_exercises` project \> `Files Tab > Answers folder`
+    -   The answer file is in the **RStudio** `rforlunch_exercises` project \> `Files Tab > Answers` folder
 
 # Closing
 

@@ -37,9 +37,7 @@ library(tidyverse)
 
 b.  Insert a code chunk and import (`read_csv()`) the brodhead practice data from the `data` directory. Assign the imported data to an object name, e.g. "brodhead"
 
-```{r}
-brodhead <- read_csv()
-```
+*code chunk here*
 
 Now you are ready to make new code chunks and follow the steps in Exercise 1 (below).
 
@@ -91,7 +89,7 @@ brodhead %>%
 
 ## Answers
 
-> Answers can be found in the `_exercise_01/answers/01_dplyr_answers.qmd` file
+> Answers can be found in the `answers/01_dplyr_answers.qmd` file
 
 ## Optional
 
