@@ -25,7 +25,7 @@ library(tidyverse)
 brodhead  <- read_csv(here::here("data", "brodhead_center.csv"))
 
 # or
-# brodhead  <- read_csv("../data/brodhead_center.csv")
+# brodhead  <- read_csv("data/brodhead_center.csv")
 ```
 
 3.  Display your new `brodhead` data frame?
