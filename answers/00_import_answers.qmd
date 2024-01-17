@@ -54,6 +54,8 @@ starwars %>%
     -   How many variables (columns) are there?
     -   How many of the variables are numeric data?
 
+## Bonus 1
+
 ```{r}
 glimpse(brodhead)
 ```
