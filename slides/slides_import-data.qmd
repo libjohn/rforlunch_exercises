@@ -100,7 +100,7 @@ Model how R can work for practical reproducible workflows
 \
 
 -   Independently and transparently achieve reliable results with the same data and the same workflow
-    -   Transparenvy with reproducible workflows
+    -   Transparency with reproducible workflows
 -   Best workflow and ecosystem to achieve reproducible work is to "*do everything with code*"
     -   Import data, analyze, visualize, and publish/share
 
@@ -284,16 +284,16 @@ Along the way
 
  
 
-+----------+---------------+--------------+-------------------+
-| Operator | Operator Name | Keystore     | Pnuemonic         |
-+==========+===============+==============+===================+
-| `<-`     | assignment    | Alt-dash     | "Gets value from" |
-+----------+---------------+--------------+-------------------+
-| `|>`\    | pipe          | Ctrl-Shift-M | "And then"        |
-| or       |               |              |                   |
-|          |               |              |                   |
-| `%>%`    |               |              |                   |
-+----------+---------------+--------------+-------------------+
++--------------+---------------+--------------+-------------------+
+| Operator     | Operator Name | Keystore     | Pnuemonic         |
++==============+===============+==============+===================+
+| `<-`         | assignment    | Alt-dash     | "Gets value from" |
++--------------+---------------+--------------+-------------------+
+| `|>`\        | pipe          | Ctrl-Shift-M | "And then"        |
+| or           |               |              |                   |
+|              |               |              |                   |
+| `%>%`        |               |              |                   |
++--------------+---------------+--------------+-------------------+
 
 ## Citation management
 
