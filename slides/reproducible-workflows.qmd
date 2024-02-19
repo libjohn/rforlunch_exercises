@@ -17,7 +17,7 @@ format:
   revealjs:
     theme: moon
     self-contained: true  
-    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● [https://duke.is/lunchtime-workflows](https://duke.is/lunchtime-workflows) ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
+    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● [https://duke.is/rforlunch-git](https://duke.is/rforlunch-git) ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
     logo: images/rfun_logo.png
 license: "CC BY"
 editor: visual
@@ -209,6 +209,14 @@ Recommended: While [sharing your compute environments](https://quarto.org/docs/p
 # Closing
 
 ## Citation management
+
+Where to find
+
+-   [These slides](https://duke.is/rforlunch-git)
+
+    -   A [PDF copy](reproducible-workflows.pdf)
+
+-   [Code for above](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/slides_reproducible-workflows.qmd)
 
  
 
