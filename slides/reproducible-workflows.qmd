@@ -214,9 +214,9 @@ Where to find
 
 -   [These slides](https://duke.is/rforlunch-git)
 
-    -   A [PDF copy](reproducible-workflows.pdf)
+    -   A [PDF copy](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/reproducible-workflows.pdf)
 
--   [Code for above](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/slides_reproducible-workflows.qmd)
+-   [Code for above](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/reproducible-workflows.qmd)
 
  
 
