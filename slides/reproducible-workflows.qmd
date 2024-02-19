@@ -1,0 +1,223 @@
+---
+title: "R for Lunch"
+subtitle: 'Reproducible workflows'
+author: 
+  name: "John Little"
+  orcid: 0000-0002-3600-0972
+  affiliation:
+    - name: Center for Data & Visualization Sciences
+      url: https://library.duke.edu/data
+    - name: Duke University Libraries 
+      city: Durham
+      state: NC
+      country: US
+date: today
+
+format: 
+  revealjs:
+    theme: moon
+    self-contained: true  
+    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● [https://duke.is/lunchtime-workflows](https://duke.is/lunchtime-workflows) ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
+    logo: images/rfun_logo.png
+license: "CC BY"
+editor: visual
+---
+
+## Today's topics
+
+\
+
+-   RStudio ([Projects](https://intro2r.library.duke.edu/proj.html) & [Setting/preferences](https://intro2r.library.duke.edu/proj.html#settings-in-rstudio-preferences))
+
+-   Generate reports from code ([Quarto](https://quarto.org/docs/get-started/ "pick instructions for your IDE/editor") Scientific Publishing system)
+
+-   [Publishing reports](https://quarto.org/docs/publishing/)
+
+**\
+You should have the latest [version of Quarto](https://quarto.org/docs/get-started/)!!**
+
+## Reproducibility
+
+\
+
+[What is a reproducible workflow and why does it matter?](https://www.youtube.com/playlist?list=PLXsA_OlR0o0PcuagC_TUl32RULZkLHI1D)
+
+## Streaming previous workshops
+
+R for Lunch: a lunchtime learning series\
+
+-   [IDE and Import data](https://warpwire.duke.edu/w/ZSIIAA/) (RStudio IDE, Import data, Code notebook)
+-   [Wrangle data](https://warpwire.duke.edu/w/3R8IAA/) {dplyr}
+-   Visualizing with {ggplot2}
+-   Mapping and Spatial Analysis
+
+\
+**See Also**: Online Resources: ([Rfun](https://rfun.library.duke.edu) \| [CDVS resources](https://library.duke.edu/data/tutorials))
+
+## Housekeeping
+
+-   Drew / Lauren / breakout rooms
+-   [CDVS](https://library.duke.edu/data/ "Center for Data and Visualizations Sciences")
+    -   Themes
+        -   Data Management [(Plans, Reproducibility, Repositories)]{style="font-size: large; color: gray;"}
+
+        -   Data Science
+
+        -   Data Visualization
+
+        -   GIS and Spatial Analysis
+
+        -   Data Sources
+
+## Housekeeping continued
+
+-   Website - <https://library.duke.edu/data>
+-   Workshops
+    -   <https://library.duke.edu/data/workshops>
+-   Consulting in the Lab
+    -   [askData\@duke.edu](mailto:askdata@duke.edu)
+    -   my schedule: <https://is.gd/littleconsult>
+
+## R for Lunch as a series {visibility="hidden"}
+
+R for Lunch is a series that meets 8 times (till EOM Feb.) After today it will meet regularly on Thursdays at noon.
+
+-   Sign-up for each workshop individually
+
+-   Each episode has a unique zoom link
+
+## Ideal: R as a practical reproducible workflow
+
+-   Code in RStudio
+
+-   Report types: A select list of Quarto output formats
+
+    -   these slides ([Live](https://duke.is/lunchtime-workflows) \| [Code and PDF on GitHub](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/slides_import-data.pdf "PDF report - slides"))
+    -   the [*Introduction to R/Tidyverse/Quarto*](https://intro2r.library.duke.edu/) text.
+    -   [Manuscript](https://quarto.org/docs/manuscripts/): a framework for writing and publishing scholarly articles (live [example](https://quarto-ext.github.io/manuscript-template-jupyter/))
+
+-   Use [Git and GitHub](https://rfun.library.duke.edu/git) for version control, code sharing, and collaboration
+
+## Reproducibility settings for your IDE
+
+-   RStudio ([Projects](https://intro2r.library.duke.edu/proj.html) & [Setting/preferences](https://intro2r.library.duke.edu/proj.html#settings-in-rstudio-preferences))
+
+::: columns
+::: {.column width="50%"}
+![](images/prefers_global_options_general.jpg)
+:::
+
+::: {.column width="50%"}
+![`Global options > Code ^^`\
+`<- Global options > General`](images/prefers_global_options_pipe.jpg)
+:::
+:::
+
+## Publish
+
+-   Full [Instructions](https://quarto.org/docs/publishing/)
+
+-   Steps (simplified)
+
+    1.  In **CLI** [(terminal, powershell, bash, etc.)]{style="color: gray;  font-size: x-large;"}: `quarto publish` [(For select Quarto project types)]{style="color: gray; font-size: x-large;"}
+
+    2.  Choose a destination [(e.g. quarto.pub or netlify.com)]{style="color: gray; font-size: x-large;"}
+
+::: aside
+Or, drop and drag to Netlify [(A very simple alternative Netlify targeting approach)]{style="color: gray; font-size: large;"}
+
+Or, GitHub Pages [YMMV. Different options. Most advanced leverages GitHub Actions]{style="color: gray; font-size: large;"}
+
+Or, other targets [(see Instructions link, above)]{style="color: gray; font-size: large;"}
+:::
+
+## Manuscript demo
+
+\
+
+-   Live Demonstrations
+    -   [my take](https://vermillion-sunshine-2799f6.netlify.app/) \| [documented at GitHub](https://github.com/libjohn/investigate_repro_workflows)
+    -   [Posit documentation](https://quarto-ext.github.io/manuscript-template-jupyter/) \| [documented](https://quarto.org/docs/manuscripts/)
+
+## Instructions simplified
+
+1.  In **CLI** [(e.g. RStudio Terminal, PowerShell, Bash, etc.)]{style="color: gray; font-size: large;"}:<br/>`quarto create` \> `project` \> `manuscript`
+    -   [Identify LFS path / location]{style="color: gray;"}
+2.  Go to that location; double-click \<new_proj_name\>.Rproj file [(if using R)]{style="color: gray; font-size: large;"}
+3.  `useths::use_git()`
+4.  in `_quarto.yml`: change `jats: default` to `pdf: default`
+
+## {[renv](https://rstudio.github.io/renv/index.html)}
+
+\
+
+Create reproducible environments for your R projects
+
+\
+
+-   [Get Started](https://rstudio.github.io/renv/articles/renv.html)
+    -   `renv::init()`
+    -   `renv::snapshot()`
+    -   and `renv::restore()`
+
+## Binder (Containers)
+
+\
+
+The Binder project makes it easy to share compute environments. This is [documented](https://quarto.org/docs/projects/binder.html) very well at Quarto.
+
+In essence:
+
+-   CLI terminal: `quarto use binder`
+
+::: aside
+Recommended: While [sharing your compute environments](https://quarto.org/docs/projects/binder.html) consider sharing your GitHub [Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases) while simultaneously minting DOIs. This [makes your content citable](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content) and places your milestones into the [Zenodo](https://about.zenodo.org/) archive for posterity.
+:::
+
+# Polls
+
+# We are here to help
+
+-   askData\@duke.edu
+
+-   https://library.duke.edu/data
+
+-   https://is.gd/littleconsult
+
+# Let's do it
+
+## Two things for today
+
+-   five essential {dplyr} data wrangling verbs
+
+-   data pipes inside code-chunks
+
+-   <https://intro2r.library.duke.edu/wrangle.html>
+
+## Exercises
+
+1.  https://intro2r.library.duke.edu/ \> Exercises \> Link out \> Green [**Code**]{style="color:green"} button \> Download ZIP
+
+2.  Then, Unzip (i.e. Expand) the folder (on your local file system)
+
+3.  Then, double click the `rforlunch_exercises.Rproj` file
+
+4.  From **RStudio** the Files tab, open the `01_dplyr.qmd`
+
+    -   The answer file is in the **RStudio** `rforlunch_exercises` project \> `Files Tab > Answers` folder
+
+# Closing
+
+## Citation management
+
+ 
+
+RStudio \> Quarto Notebook \> Insert \> Citation
+
+Example DOI: 10.18637/jss.v059.i10
+
+# Bye for now
+
+-   askData\@duke.edu
+-   <https://is.gd/littleconsult>
+-   <https://library.duke.edu/data>
