@@ -210,19 +210,17 @@ Recommended: While [sharing your compute environments](https://quarto.org/docs/p
 
 ## Citation management
 
-Where to find
+RStudio \> Quarto Notebook \> Insert \> Citation
+
+Example DOI: 10.18637/jss.v059.i10
+
+## Where to find
 
 -   [These slides](https://duke.is/rforlunch-git)
 
     -   A [PDF copy](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/reproducible-workflows.pdf)
 
--   [Code for above](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/reproducible-workflows.qmd)
-
- 
-
-RStudio \> Quarto Notebook \> Insert \> Citation
-
-Example DOI: 10.18637/jss.v059.i10
+-   [Code for above](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/reproducible-workflows.qmd) 
 
 # Bye for now
 
