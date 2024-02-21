@@ -157,7 +157,7 @@ Then,
 
 RStudio \> Quarto Notebook \> Insert \> Citation
 
-Example DOI: 10.18637/jss.v059.i10
+Example DOI: [10.18637/jss.v059.i10](https://doi.org/10.18637/jss.v059.i10)
 
 ## Publish
 
@@ -187,11 +187,13 @@ Or, other targets [(see Instructions link, above)]{style="color: gray; font-size
 
 ## Instructions simplified
 
-1.  In **CLI** [(e.g. RStudio Terminal, PowerShell, Bash, etc.)]{style="color: gray; font-size: large;"}:<br/>`quarto create` \> `project` \> `manuscript`
-    -   [Identify LFS path / location]{style="color: gray;"}
-2.  Go to that location; double-click \<new_proj_name\>.Rproj file [(if using R)]{style="color: gray; font-size: large;"}
-3.  `usethis::use_git()`
-4.  in `_quarto.yml`: change `jats: default` to `pdf: default`
+1.  In **Rstudio**: `File` \> `New project` \> `New Directory` \> `Quarto manuscript`
+2.  [x]   Create a git repository (**optional**)
+3.  in `_quarto.yml`: change `jats: default` to `pdf: default` (**optional**)
+
+::: aside
+JATS creates a MECA bundle, i.e. a standard manuscript exchange format.
+:::
 
 ## {[renv](https://rstudio.github.io/renv/index.html)}
 
@@ -222,11 +224,11 @@ Recommended: While [sharing your compute environments](https://quarto.org/docs/p
 
 # We are here to help
 
--   askData\@duke.edu
+-   [askData\@duke.edu](mailto:askData@duke.edu)
 
--   https://library.duke.edu/data
+-   <https://library.duke.edu/data>
 
--   https://is.gd/littleconsult
+-   <https://is.gd/littleconsult>
 
 # Closing
 
@@ -238,8 +240,12 @@ Recommended: While [sharing your compute environments](https://quarto.org/docs/p
 
 -   [Code for above](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/reproducible-workflows.qmd) 
 
+::: aside
+CC BY 4.0
+:::
+
 # Bye for now
 
--   askData\@duke.edu
+-   [askData\@duke.edu](mailto:askdata@duke.edu)
 -   <https://is.gd/littleconsult>
 -   <https://library.duke.edu/data>
