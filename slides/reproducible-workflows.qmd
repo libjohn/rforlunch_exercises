@@ -182,8 +182,8 @@ Or, other targets [(see Instructions link, above)]{style="color: gray; font-size
 \
 
 -   Live Demonstrations
-    -   [my take](https://vermillion-sunshine-2799f6.netlify.app/) \| [documented at GitHub](https://github.com/libjohn/investigate_repro_workflows)
-    -   [Posit documentation](https://quarto-ext.github.io/manuscript-template-jupyter/) \| [documented](https://quarto.org/docs/manuscripts/)
+    -   [Live example for this workshop](https://vermillion-sunshine-2799f6.netlify.app/) \| [code at GitHub](https://github.com/libjohn/investigate_repro_workflows)
+        -   Based on [Posit demo](https://quarto-ext.github.io/manuscript-template-jupyter/) \| [documentation](https://quarto.org/docs/manuscripts/)
 
 ## Instructions simplified
 
