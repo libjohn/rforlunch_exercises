@@ -1,0 +1,207 @@
+---
+title: "R for Lunch"
+subtitle: 'Larger than RAM computing with simplified SQL techniques and DuckDB'
+author: 
+  name: "John Little"
+  orcid: 0000-0002-3600-0972
+  affiliation:
+    - name: Center for Data & Visualization Sciences
+      url: https://library.duke.edu/data
+    - name: Duke University Libraries 
+      city: Durham
+      state: NC
+      country: US
+date: today
+
+format: 
+  revealjs:
+    theme: moon
+    self-contained: true  
+    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● SLIDES--URL ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
+    logo: images/rfun_logo.png
+license: "CC BY"
+editor: visual
+---
+
+## Today's topic
+
+\
+
+### Use case
+
+Query your larger-than-RAM data without a lot of application or hardware overhead [(i.e. excessive administrative demand/support)]{style="font-size: large; color: gray;"}
+
+\
+
+#### Problem:
+
+If you have 16 GB RAM, your effective computational capacity in R is 8 GB.
+
+## Streaming previous workshops
+
+R for Lunch: a lunchtime learning series\
+
+-   [IDE and Import data](https://warpwire.duke.edu/w/ZSIIAA/) [(RStudio IDE, Import data, Code notebook)]{style="font-size: large; color: gray;"}
+-   [Wrangle data](https://warpwire.duke.edu/w/3R8IAA/) {dplyr}
+-   Visualizing with {ggplot2}
+-   Mapping and Spatial Analysis
+-   [Reproducible Workflows](https://warpwire.duke.edu/w/SzMIAA/) [(RStudio Preferences, Quarto, Version-Control)]{style="font-size: large; color: gray;"}
+
+::: aside
+**See Also**: Online Resources: ([Rfun](https://rfun.library.duke.edu) \| [CDVS resources](https://library.duke.edu/data/tutorials))
+:::
+
+## Housekeeping
+
+-   Drew / Lauren / breakout rooms
+-   [CDVS](https://library.duke.edu/data/ "Center for Data and Visualizations Sciences")
+    -   Themes
+        -   Data Management [(Plans, Reproducibility, Repositories)]{style="font-size: large; color: gray;"}
+
+        -   Data Science
+
+        -   Data Visualization
+
+        -   GIS and Spatial Analysis
+
+        -   Data Sources
+
+## Housekeeping continued
+
+-   Website - <https://library.duke.edu/data>
+-   Workshops
+    -   <https://library.duke.edu/data/workshops>
+-   Consulting in the Lab
+    -   [askData\@duke.edu](mailto:askdata@duke.edu)
+    -   my schedule: <https://is.gd/littleconsult>
+
+## DBMS
+
+-   There are many Database Management Systems (DBMS)
+-   There is no "one-size-fits-all" DBMS system
+-   Most [(many?)]{style="font-size: large; color: gray;"} use SQL [(Structured Query Language)]{style="font-size: large; color: gray;"}
+    -   Each DBMS has it's own flavor or SQL
+    -   The basics of SQL largely work across the DBMS spectrum
+
+## DuckDB is an analytics database
+
+-   designed for query
+    -   column oriented (query / analytics) vs record oriented (rows / records)
+-   relational and table oriented
+-   easy to install and use [{duckdb}]{style="font-size: large; color: gray;"}
+-   no external dependencies
+-   don't have to build own server
+-   no special config files (APIs) although there are extensions
+
+## Query via {dplyr} or SQL
+
+\
+
+-   {duckdb} and {dplyr} work together, out of the box
+
+-   Can use many of the tidyverse functions
+
+-   Or, if you want to write advanced SQL statements, you may
+
+## Query
+
+\
+
+
+::: columns
+::: {.column width="50%"}
+
+### {dplyr}
+
+```         
+mysw |> 
+  filter(mass < 500) |>
+  select(name, homeworld, gender) |> 
+  head(10)
+```
+
+\
+
+::::: {style="font-size: large;"}
+- Uses {d**b**plyr} in the background  
+- Can still compose SQL
+:::::
+
+
+:::
+
+::: {.column width="50%"}
+
+### SQL
+
+```         
+SELECT "name", homeworld, gender
+FROM star_table
+WHERE (mass < 500.0)
+LIMIT 10
+```
+:::
+:::
+
+
+
+
+## DuckDB vs SQLite
+
+\
+
+-   Windowing (analytics) v. Transactional (records)
+-   Querying vs light-weight apps
+-   Analytics oriented v. Simplicity
+
+## Parquet files
+
+- An alternative to CSV files
+- Column oriented file [(unlike row-oriented CSV files)]{style="font-size: large; color: gray;"}
+- Compression [(column oriented saves storage space and speeds up analytics)]{style="font-size: large; color: gray;"}
+- Can handle complex **data types**
+- Easy to import into R `arrow::open_dataset("data_parquet")`
+- Easy to convert to DuckDB: `arrow::to_duckdb()`
+
+## DuckDB works with
+
+-   CSV
+-   JSON
+-   relational tables (including SQLite)
+-   xlsx
+-   parquet
+-   more
+
+## There are duckdb extensions
+
+-   support for JSON
+-   support for Parquet files
+-   spatial extensions
+
+# We are here to help
+
+-   [askData\@duke.edu](mailto:askData@duke.edu)
+
+-   <https://library.duke.edu/data>
+
+-   <https://is.gd/littleconsult>
+
+# Closing
+
+## Where to find
+
+-   [These slides](https://duke.is/rforlunch-git)
+
+    -   A [PDF copy](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/reproducible-workflows.pdf)
+
+-   [Code for above](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/reproducible-workflows.qmd) 
+
+::: aside
+CC BY 4.0
+:::
+
+# Bye for now
+
+-   [askData\@duke.edu](mailto:askdata@duke.edu)
+-   <https://is.gd/littleconsult>
+-   <https://library.duke.edu/data>
