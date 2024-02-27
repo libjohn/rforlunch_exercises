@@ -178,20 +178,6 @@ LIMIT 10
 
 -   <https://is.gd/littleconsult>
 
-# Closing
-
-## Where to find
-
--   [These slides](https://duke.is/rforlunch-git)
-
-    -   A [PDF copy](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/reproducible-workflows.pdf)
-
--   [Code for above](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/reproducible-workflows.qmd) 
-
-::: aside
-CC BY 4.0
-:::
-
 # Bye for now
 
 -   [askData\@duke.edu](mailto:askdata@duke.edu)
