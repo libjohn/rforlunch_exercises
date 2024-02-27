@@ -444,7 +444,7 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="John Little">
-  <meta name="dcterms.date" content="2024-02-26">
+  <meta name="dcterms.date" content="2024-02-27">
   <title>R for Lunch</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -1163,7 +1163,7 @@ John Little <a href="https://orcid.org/0000-0002-3600-0972" class="quarto-title-
     </div>
 </div>
 
-  <p class="date">2024-02-26</p>
+  <p class="date">2024-02-27</p>
 </section>
 <section id="todays-topic" class="slide level2">
 <h2>Today’s topic</h2>
@@ -1298,17 +1298,6 @@ LIMIT 10</code></pre>
 <li>Analytics oriented v. Simplicity</li>
 </ul>
 </section>
-<section id="parquet-files" class="slide level2">
-<h2>Parquet files</h2>
-<ul>
-<li>An alternative to CSV files</li>
-<li>Column oriented file <span style="font-size: large; color: gray;">(unlike row-oriented CSV files)</span></li>
-<li>Compression <span style="font-size: large; color: gray;">(column oriented saves storage space and speeds up analytics)</span></li>
-<li>Can handle complex <strong>data types</strong></li>
-<li>Easy to import into R <code>arrow::open_dataset(&quot;data_parquet&quot;)</code></li>
-<li>Easy to convert to DuckDB: <code>arrow::to_duckdb()</code></li>
-</ul>
-</section>
 <section id="duckdb-works-with" class="slide level2">
 <h2>DuckDB works with</h2>
 <ul>
@@ -1324,8 +1313,19 @@ LIMIT 10</code></pre>
 <h2>There are duckdb extensions</h2>
 <ul>
 <li>support for JSON</li>
-<li>support for Parquet files</li>
+<li>support for parquet files</li>
 <li>spatial extensions</li>
+</ul>
+</section>
+<section id="parquet-files" class="slide level2">
+<h2>Parquet files</h2>
+<ul>
+<li>An alternative to CSV files</li>
+<li>Column oriented file <span style="font-size: large; color: gray;">(unlike row-oriented CSV files)</span></li>
+<li>Compression <span style="font-size: large; color: gray;">(column oriented saves storage space and speeds up analytics)</span></li>
+<li>Can handle complex <strong>data types</strong></li>
+<li>Easy to import into R <code>arrow::open_dataset(&quot;data_parquet&quot;)</code></li>
+<li>Easy to convert to DuckDB: <code>arrow::to_duckdb()</code></li>
 </ul>
 </section>
 <section id="we-are-here-to-help" class="title-slide slide level1 center">
