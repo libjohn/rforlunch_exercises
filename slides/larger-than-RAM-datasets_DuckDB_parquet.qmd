@@ -17,7 +17,7 @@ format:
   revealjs:
     theme: moon
     self-contained: true  
-    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● SLIDES--URL ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
+    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
     logo: images/rfun_logo.png
 license: "CC BY"
 editor: visual
