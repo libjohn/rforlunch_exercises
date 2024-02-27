@@ -107,10 +107,8 @@ R for Lunch: a lunchtime learning series\
 
 \
 
-
 ::: columns
 ::: {.column width="50%"}
-
 ### {dplyr}
 
 ```         
@@ -122,16 +120,13 @@ mysw |>
 
 \
 
-::::: {style="font-size: large;"}
-- Uses {d**b**plyr} in the background  
-- Can still compose SQL
-:::::
-
-
+::: {style="font-size: large;"}
+-   Uses {d**b**plyr} in the background\
+-   Can still compose SQL
+:::
 :::
 
 ::: {.column width="50%"}
-
 ### SQL
 
 ```         
@@ -143,9 +138,6 @@ LIMIT 10
 :::
 :::
 
-
-
-
 ## DuckDB vs SQLite
 
 \
@@ -153,15 +145,6 @@ LIMIT 10
 -   Windowing (analytics) v. Transactional (records)
 -   Querying vs light-weight apps
 -   Analytics oriented v. Simplicity
-
-## Parquet files
-
-- An alternative to CSV files
-- Column oriented file [(unlike row-oriented CSV files)]{style="font-size: large; color: gray;"}
-- Compression [(column oriented saves storage space and speeds up analytics)]{style="font-size: large; color: gray;"}
-- Can handle complex **data types**
-- Easy to import into R `arrow::open_dataset("data_parquet")`
-- Easy to convert to DuckDB: `arrow::to_duckdb()`
 
 ## DuckDB works with
 
@@ -175,8 +158,17 @@ LIMIT 10
 ## There are duckdb extensions
 
 -   support for JSON
--   support for Parquet files
+-   support for parquet files
 -   spatial extensions
+
+## Parquet files
+
+-   An alternative to CSV files
+-   Column oriented file [(unlike row-oriented CSV files)]{style="font-size: large; color: gray;"}
+-   Compression [(column oriented saves storage space and speeds up analytics)]{style="font-size: large; color: gray;"}
+-   Can handle complex **data types**
+-   Easy to import into R `arrow::open_dataset("data_parquet")`
+-   Easy to convert to DuckDB: `arrow::to_duckdb()`
 
 # We are here to help
 
