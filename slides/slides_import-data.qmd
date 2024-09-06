@@ -60,7 +60,7 @@ Preceded by [where to download RStudio and R](https://posit.co/download/rstudio-
 
 ## R for Lunch as a series
 
-R for Lunch is a series that meets 8 times (till EOM Feb.) After today it will meet regularly on Thursdays at noon.
+R for Lunch is a series that meets 8 times (till EOM Oct.) After today it will meet regularly on Thursdays at noon.
 
 -   Sign-up for each workshop individually
 
@@ -130,6 +130,10 @@ works with R and Python
     -   Render reproducible, shareable reports
 -   A next-gen (or modern) Markdown
 
+## Quarto notebook
+
+![A side-by-side view of a Quarto editor and rendered report expression](images/quarto_notebook_Screenshot_2024-09-06.png){fig-alt="side-by-side view of a Quarto editor and rendered report expression" fig-align="center"}
+
 ## Opinionated
 
  
@@ -140,7 +144,7 @@ works with R and Python
 
 ## Tidy data[^1] {background-image="images/tidy_data.png" background-size="contain" background-repeat="false"}
 
-[^1]: A robust discussion of *tidy data* can be found in *R for Data Science* ([Wickham, Çetinkaya-Rundel, and Grolemund 2023](https://intro2r.library.duke.edu/longer_wider#ref-wickham2023))*: [https://r4ds.had.co.nz/tidy-data.html](https://r4ds.had.co.nz/tidy-data.htmlhttps://r4ds.had.co.nz/tidy-data.html)*
+[^1]: A robust discussion of *tidy data* can be found in *R for Data Science* ([Wickham, Çetinkaya-Rundel, and Grolemund 2023](https://intro2r.library.duke.edu/longer_wider#ref-wickham2023))*: <https://r4ds.had.co.nz/tidy-data.html>*
 
 ## Tidy data
 
