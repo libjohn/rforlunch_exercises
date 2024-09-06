@@ -1,5 +1,6 @@
 project:
   title: "rforlunch_exercises"
+  output-dir: "docs"
 
 editor: visual
 
