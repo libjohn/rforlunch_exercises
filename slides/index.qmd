@@ -1,0 +1,11 @@
+---
+format: revealjs
+---
+
+# RforLunch - episode presentation slides
+
+-   [Import data](https://libjohn.github.io/rforlunch_exercises/slides/slides_import-data.html)
+
+-   [Wrangle data](https://libjohn.github.io/rforlunch_exercises/slides/slides_data-wrangling_dplyr.html)
+
+-   Visualize data

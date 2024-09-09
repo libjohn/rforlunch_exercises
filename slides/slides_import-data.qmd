@@ -76,7 +76,7 @@ Model how R can work for practical reproducible workflows
 
 -   Code in RStudio
 
--   One kind of report is these slides ([GitHub](https://github.com/libjohn/rforlunch_exercises/blob/main/slides/slides_import-data.pdf "PDF report - slides"))
+-   One kind of report is these slides ([Quarto Presentation slidedeck - hosted](https://libjohn.github.io/rforlunch_exercises/slides/slides_import-data.html "PDF report - slides"))
 
 -   Another report is the [*Introduction to R/Tidyverse/Quarto* text](https://intro2r.library.duke.edu/).
 
