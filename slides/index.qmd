@@ -1,11 +1,37 @@
 ---
-format: revealjs
+format: 
+  revealjs:
+    theme: moon
+    self-contained: true  
+    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
+    logo: images/rfun_logo.png
+license: "CC BY"
+editor: visual
 ---
 
-# RforLunch - episode presentation slides
+## RforLunch - episode presentation slides
 
 -   [Import data](https://libjohn.github.io/rforlunch_exercises/slides/slides_import-data.html)
 
 -   [Wrangle data](https://libjohn.github.io/rforlunch_exercises/slides/slides_data-wrangling_dplyr.html)
 
 -   Visualize data
+
+
+--- 
+
+## Resources
+
+### Recordings
+
+[https://warpwire.duke.edu/w/bQAEAA/](https://warpwire.duke.edu/w/bQAEAA/)
+
+### Exercises
+
+Code, Data, and answers 
+
+[https://github.com/libjohn/rforlunch_exercises](https://github.com/libjohn/rforlunch_exercises)
+
+### Text
+
+[Getting started:  An introduction to R](https://intro2r.library.duke.edu/)
