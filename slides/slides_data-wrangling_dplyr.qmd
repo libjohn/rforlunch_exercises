@@ -77,7 +77,7 @@ Model how R can work for practical reproducible workflows
 
 -   Code in RStudio
 
--   One kind of report is these slides (today: [data wrangling](https://libjohn.github.io/rforlunch_exercises/slides/slides_data-wrangling_dplyr.html#/eat-your-own-dog-food) ; yesterday: [import data](https://libjohn.github.io/rforlunch_exercises/slides/slides_import-data.html))
+-   One kind of report is these slides (today: [data wrangling](https://libjohn.github.io/rforlunch_exercises/slides/slides_data-wrangling_dplyr.html) ; yesterday: [import data](https://libjohn.github.io/rforlunch_exercises/slides/slides_import-data.html))
 
 -   Another report is the [*Introduction to R/Tidyverse/Quarto* text](https://intro2r.library.duke.edu/).
 
