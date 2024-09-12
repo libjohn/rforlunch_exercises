@@ -35,7 +35,7 @@ First we need to load the {dplyr} package for wrangling and the {readr} package 
 #| message: false
 
 library(tidyverse)
-brodhead_center <- read_csv("data/brodhead_center.csv")
+brodhead_center <- read_csv(here::here("data/brodhead_center.csv"))
 ```
 
 #### `select()`
@@ -45,10 +45,6 @@ brodhead_center |>
   select(name, type)
 ```
 
-::: column-margin
-[![Select columns](images/select.svg){fig-alt="Select columns"}](https://dplyr.tidyverse.org/reference/select.html)
-:::
-
 #### `filter()`
 
 ```{r}
@@ -56,9 +52,6 @@ brodhead_center |>
   filter(menuType == "dessert")
 ```
 
-::: column-margin
-[![Filter by rows](images/filter_by_rows.svg){fig-alt="Filter by rows"}](https://dplyr.tidyverse.org/reference/filter.html)
-:::
 
 #### `arrange()`
 
@@ -67,9 +60,6 @@ brodhead_center |>
   arrange(cost)
 ```
 
-::: column-margin
-[![Arrange rows by the values in a column](images/arrange_rows.svg){fig-alt="Arrange rows by the values in a column"}](https://dplyr.tidyverse.org/reference/arrange.html)
-:::
 
 #### `mutate()`
 
@@ -78,9 +68,6 @@ brodhead_center |>
   mutate(ratings_high = rating * 2)
 ```
 
-::: column-margin
-[![Create new variable or modify variable with mutate()](images/mutate.svg){fig-alt="Create new variable or modify variable with mutate()"}](https://dplyr.tidyverse.org/reference/mutate.html)
-:::
 
 We can also mutate data by groups or categories
 
