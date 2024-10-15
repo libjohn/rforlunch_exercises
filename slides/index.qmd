@@ -17,21 +17,22 @@ editor: visual
 
 -   Visualize data
 
+-   [Reproducible reports and computational workflows with Quarto](https://libjohn.github.io/rforlunch_exercises/slides/quarto_reproducible.html)
 
---- 
+------------------------------------------------------------------------
 
 ## Resources
 
 ### Recordings
 
-[https://warpwire.duke.edu/w/bQAEAA/](https://warpwire.duke.edu/w/bQAEAA/)
+<https://warpwire.duke.edu/w/bQAEAA/>
 
 ### Exercises
 
-Code, Data, and answers 
+Code, Data, and answers
 
-[https://github.com/libjohn/rforlunch_exercises](https://github.com/libjohn/rforlunch_exercises)
+<https://github.com/libjohn/rforlunch_exercises>
 
 ### Text
 
-[Getting started:  An introduction to R](https://intro2r.library.duke.edu/)
+[Getting started: An introduction to R](https://intro2r.library.duke.edu/)
