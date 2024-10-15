@@ -1,8 +1,31 @@
 ---
 title: "Streamline reporting"
 subtitle: "Reproducible reports with Quarto"
-author: "John Little"
-format: revealjs
+
+author: 
+  name: "John Little"
+  orcid: 0000-0002-3600-0972
+  affiliation:
+    - name: Duke University Libraries
+      department: Center for Data & Visualization Sciences
+      city: Durham
+      state: NC
+      country: US
+      url:  https://library.duke.edu/data
+institute: "Center for Data & Visualization Sciences"
+date: today
+
+format: 
+  revealjs:
+    theme: moon
+    self-contained: true  
+    footer:  "[John R Little](https://JohnLittle.info) ● [Center for Data & Visualization Sciences](https://library.duke.edu/data/) ● [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
+    logo: images/rfun_logo.png
+    
+output-dir: "/docs"    
+
+license: "CC BY"
+
 editor: source
 ---
 
@@ -67,23 +90,26 @@ Take control of your reports and can reduce dependencies on subscription hosts.
 
 -   Demo a Quarto Manuscript
     -   [Blank Slate Approach to **reproducibility**: RStudio **settings**](%5BRStudio%20User%20Guide%20-%20Get%20Started%20(posit.co)%5D(https://docs.posit.co/ide/user/ide/get-started/#blank-slate))
-    -   **BUILD** `quarto render` (**Render** Proejct)
-    -   `_quarto.yaml` [`<--` Example at Quarto documentation](https://quarto.org/docs/authoring/front-matter.html){style="color: grey; font-size: x-large;"}
+    -   **BUILD** `quarto render` [(**Render** Proejct)]{style="color: grey; font-size: x-large;"}
+    -   `_quarto.yaml` [ - -  Example at Quarto documentation](https://quarto.org/docs/authoring/front-matter.html){style="color: grey; font-size: x-large;"}
 
 ## Prerequisites
 
 -   Already installed _tinytex_ on Windows via Terminal [(takes several minutes)]{style="color: grey; font-size: x-large;"}
     -   Rstudio \> Terminal \> `quarto install tinytex`
 -   Use **RStudio Project** protocol 
-    -   And folder under git version control [(next week)]{style="color: grey; font-size: x-large;"}
+    -   Use git version control [(next week)]{style="color: grey; font-size: x-large;"}
     -   Use {renv} to back-up specific package versions
     -   Use GitHub to manage versions
-    -   Linking GitHub to Zenodo to mint DOIs and archive milestones
+    -   Link GitHub to Zenodo to mint DOIs and archive milestones
 
-## Prequeisites ...
+## Prequeisites . . .
 
 \
 Bibliography
+
+\
+Quarto leverages bib files from from bibliographic reference managers [(Zotero, EndNote)]{style="color: grey;"} and imports relevant citation data from DOIs
 
 -   references.bib - **bibliography file**
 
@@ -101,6 +127,8 @@ Clone [example](https://github.com/quarto-ext/manuscript-template-rstudio) from 
 ## Hands-on
 
 Make a new RStudio project - choose WebSite
+
+[Directions](https://mine-cetinkaya-rundel.github.io/quarto-jsm24/4-manuscripts/4-manuscripts.html#/getting-started) from Çetinkaya-Rundel & Wickham
 
 ## Dashboards
 
