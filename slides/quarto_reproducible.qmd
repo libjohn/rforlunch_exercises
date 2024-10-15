@@ -1,0 +1,111 @@
+---
+title: "Streamline reproducible workflows"
+author: "John Little"
+format: revealjs
+---
+
+## What is reproducibility?
+
+\
+
+Recreate the exact results of a computational analysis or experiment using the same data, code, and methods as the original study.
+
+\
+
+Someone else should be able to follow the same steps and obtain the same outcomes.
+
+## What is workflow
+
+A structured sequence of data processing, analysis, and computational steps used to transform raw data into meaningful results or insights. It typically involves:
+
+-   Data acquisition and preparation
+-   Processing and analysis steps Generation of outputs (e.g., results, visualizations)
+-   Documentation of the process
+
+<center>Automated and Reproducible</center>
+
+## Quarto
+
+\
+
+Quarto is a scientific publishing system that enables reproducible workflows and simplifies generating reports from code.
+
+\
+
+Quarto uses notebooks as the primary document format.
+
+\ 
+RStudio and Quarto were introduced and discussed in previous sessions.
+
+
+## Notebooks
+
+\
+
+A notebook is a document containing code and natural language
+
+-   Jupyter (.ipynb)
+-   Quarto document (.qmd) (next-gen R Markdown)
+
+## What we'll learn
+
+Streamlining reproducible workflows - from code to reports (slides, PDF, dahsboards, etc.) that enable reproducible workflows and simplify generating reports from code. 
+
+\
+Take control of your reports and can reduce dependencies on subscription hosts. 
+
+
+## RStudio configurations
+
+-   Demo a Quarto Manuscript
+    -   [Blank Slate Approach to **reproducibility**: RStudio **settings**](%5BRStudio%20User%20Guide%20-%20Get%20Started%20(posit.co)%5D(https://docs.posit.co/ide/user/ide/get-started/#blank-slate))
+    -   **BUILD** `quarto render` (**Render** Proejct)
+    -   `_quarto.yaml` [Example at Quarto documentation](https://quarto.org/docs/authoring/front-matter.html)
+
+## Prerequisites
+
+-   Already installed tinytex on Windows via Terminal (takes several minutes)
+    -   Rstudio \> Terminal \> `quarto install tinytex`
+-   Using RStudio Project protocol and
+    -   putting parent folder under git version control (next week)
+    -   Using {renv} to ensure I'm backing up specific package versions
+    -   Using GitHub to manage versioning
+    -   Linking GitHub to Zenodo to mint DOIs and archive milestones
+
+## Prequeisites continued
+
+-   references.bib - **bibliography file**
+
+## SHOW
+
+Clone example from GitHub
+
+-   RStudio \> Project \> new Project \> Quarto Manuscript
+
+## More information:
+
+      
+- [Çetinkaya-Rundel & Wickham](https://mine-cetinkaya-rundel.github.io/quarto-jsm24/4-manuscripts/4-manuscripts.html)
+- [Quarto documentation on Manuscripts]([Quarto Manuscripts – Quarto](https://quarto.org/docs/manuscripts/))
+
+## Hands-on
+
+Make a new RStudio project - choose WebSite
+
+## Dashboards
+
+Dashboards: Just like a standard quarto document ([docs](%5BQuarto%20Dashboards%20–%20Quarto%5D(https://quarto.org/docs/dashboards/))). YAML -\> `format: dashboard`
+
+-   Interactivity
+    -   Simple interactivity with [HTML Widgets](%5Bhtmlwidgets%20for%20R%5D(https://www.htmlwidgets.org/))
+    -   Advanced interactivity with Shiny (server-side) and Observable (client-side)
+
+## More tips
+
+-   Themes
+    -   [HTML](%5BHTML%20Theming%20–%20Quarto%5D(https://quarto.org/docs/output-formats/html-themes.html)) \| [slides](%5BReveal%20Themes%20–%20Quarto%5D(https://quarto.org/docs/presentations/revealjs/themes.html))
+-   [Includes](%5BIncludes%20–%20Quarto%5D(https://quarto.org/docs/authoring/includes.html)) - child documents reference from parent notebooks
+-   [Extensions](%5BQuarto%20Extensions%20–%20Quarto%5D(https://quarto.org/docs/extensions/))
+-   [CSS Styles](%5BContent%20Editing%20–%20Quarto%5D(https://quarto.org/docs/visual-editor/content.html#css-styles))
+-   [Citations & Bibliographies](%5BCitations%20–%20Quarto%5D(https://quarto.org/docs/authoring/citations.html))
+-   [PDF Engines](%5BPDF%20Engines%20–%20Quarto%5D(https://quarto.org/docs/output-formats/pdf-engine.html#installing-tex))
