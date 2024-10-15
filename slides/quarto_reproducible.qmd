@@ -1,7 +1,9 @@
 ---
-title: "Streamline reproducible workflows"
+title: "Streamline reporting"
+subtitle: "Reproducible reports with Quarto"
 author: "John Little"
 format: revealjs
+editor: source
 ---
 
 ## What is reproducibility?
@@ -14,12 +16,19 @@ Recreate the exact results of a computational analysis or experiment using the s
 
 Someone else should be able to follow the same steps and obtain the same outcomes.
 
+\
+
+<center>[CDVS Youtube](https://www.youtube.com/playlist?list=PLXsA_OlR0o0PcuagC_TUl32RULZkLHI1D)</center>
+
 ## What is workflow
 
-A structured sequence of data processing, analysis, and computational steps used to transform raw data into meaningful results or insights. It typically involves:
+A structured sequence of data processing, analysis, and computational steps used to transform raw data into meaningful results or insights.\
+
+Typically involves:
 
 -   Data acquisition and preparation
--   Processing and analysis steps Generation of outputs (e.g., results, visualizations)
+-   Processing and analysis steps
+-   Generation of outputs (e.g., results, visualizations)
 -   Documentation of the process
 
 <center>Automated and Reproducible</center>
@@ -28,15 +37,15 @@ A structured sequence of data processing, analysis, and computational steps used
 
 \
 
-Quarto is a scientific publishing system that enables reproducible workflows and simplifies generating reports from code.
+Quarto is a scientific publishing system that enables reproducible workflows and simplifies report generation.
 
 \
 
 Quarto uses notebooks as the primary document format.
 
-\ 
-RStudio and Quarto were introduced and discussed in previous sessions.
+\
 
+RStudio and Quarto were introduced and discussed in previous sessions.
 
 ## Notebooks
 
@@ -49,44 +58,45 @@ A notebook is a document containing code and natural language
 
 ## What we'll learn
 
-Streamlining reproducible workflows - from code to reports (slides, PDF, dahsboards, etc.) that enable reproducible workflows and simplify generating reports from code. 
+Streamlining reproducible workflows - from code to reports (slides, PDF, dahsboards, etc.) that enable reproducible workflows and simplify generating reports from code.
 
 \
-Take control of your reports and can reduce dependencies on subscription hosts. 
-
+Take control of your reports and can reduce dependencies on subscription hosts.
 
 ## RStudio configurations
 
 -   Demo a Quarto Manuscript
     -   [Blank Slate Approach to **reproducibility**: RStudio **settings**](%5BRStudio%20User%20Guide%20-%20Get%20Started%20(posit.co)%5D(https://docs.posit.co/ide/user/ide/get-started/#blank-slate))
     -   **BUILD** `quarto render` (**Render** Proejct)
-    -   `_quarto.yaml` [Example at Quarto documentation](https://quarto.org/docs/authoring/front-matter.html)
+    -   `_quarto.yaml` [`<--` Example at Quarto documentation](https://quarto.org/docs/authoring/front-matter.html){style="color: grey; font-size: x-large;"}
 
 ## Prerequisites
 
--   Already installed tinytex on Windows via Terminal (takes several minutes)
+-   Already installed _tinytex_ on Windows via Terminal [(takes several minutes)]{style="color: grey; font-size: x-large;"}
     -   Rstudio \> Terminal \> `quarto install tinytex`
--   Using RStudio Project protocol and
-    -   putting parent folder under git version control (next week)
-    -   Using {renv} to ensure I'm backing up specific package versions
-    -   Using GitHub to manage versioning
+-   Use **RStudio Project** protocol 
+    -   And folder under git version control [(next week)]{style="color: grey; font-size: x-large;"}
+    -   Use {renv} to back-up specific package versions
+    -   Use GitHub to manage versions
     -   Linking GitHub to Zenodo to mint DOIs and archive milestones
 
-## Prequeisites continued
+## Prequeisites ...
+
+\
+Bibliography
 
 -   references.bib - **bibliography file**
 
 ## SHOW
 
-Clone example from GitHub
+Clone [example](https://github.com/quarto-ext/manuscript-template-rstudio) from GitHub
 
--   RStudio \> Project \> new Project \> Quarto Manuscript
+-   RStudio \> Project \> new Project \> Quarto Manuscript  \ ([documentation example](https://github.com/quarto-ext/manuscript-template-rstudio))
 
 ## More information:
 
-      
-- [Çetinkaya-Rundel & Wickham](https://mine-cetinkaya-rundel.github.io/quarto-jsm24/4-manuscripts/4-manuscripts.html)
-- [Quarto documentation on Manuscripts]([Quarto Manuscripts – Quarto](https://quarto.org/docs/manuscripts/))
+-   [Çetinkaya-Rundel & Wickham](https://mine-cetinkaya-rundel.github.io/quarto-jsm24/4-manuscripts/4-manuscripts.html)
+-   [Quarto documentation on Manuscripts](%5BQuarto%20Manuscripts%20–%20Quarto%5D(https://quarto.org/docs/manuscripts/))
 
 ## Hands-on
 

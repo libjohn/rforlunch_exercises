@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="John Little">
-  <title>Streamline reproducible workflows</title>
+  <title>Streamline reporting</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -326,7 +326,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Streamline reproducible workflows</h1>
+  <h1 class="title">Streamline reporting</h1>
+  <p class="subtitle">Reproducible reports with Quarto</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -345,13 +346,21 @@ John Little
 <p><br>
 </p>
 <p>Someone else should be able to follow the same steps and obtain the same outcomes.</p>
+<p><br>
+</p>
+<center>
+<a href="https://www.youtube.com/playlist?list=PLXsA_OlR0o0PcuagC_TUl32RULZkLHI1D">CDVS Youtube</a>
+</center>
 </section>
 <section id="what-is-workflow" class="slide level2">
 <h2>What is workflow</h2>
-<p>A structured sequence of data processing, analysis, and computational steps used to transform raw data into meaningful results or insights. It typically involves:</p>
+<p>A structured sequence of data processing, analysis, and computational steps used to transform raw data into meaningful results or insights.<br>
+</p>
+<p>Typically involves:</p>
 <ul>
 <li>Data acquisition and preparation</li>
-<li>Processing and analysis steps Generation of outputs (e.g., results, visualizations)</li>
+<li>Processing and analysis steps</li>
+<li>Generation of outputs (e.g., results, visualizations)</li>
 <li>Documentation of the process</li>
 </ul>
 <center>
@@ -362,11 +371,13 @@ Automated and Reproducible
 <h2>Quarto</h2>
 <p><br>
 </p>
-<p>Quarto is a scientific publishing system that enables reproducible workflows and simplifies generating reports from code.</p>
+<p>Quarto is a scientific publishing system that enables reproducible workflows and simplifies report generation.</p>
 <p><br>
 </p>
 <p>Quarto uses notebooks as the primary document format.</p>
-<p>&nbsp; RStudio and Quarto were introduced and discussed in previous sessions.</p>
+<p><br>
+</p>
+<p>RStudio and Quarto were introduced and discussed in previous sessions.</p>
 </section>
 <section id="notebooks" class="slide level2">
 <h2>Notebooks</h2>
@@ -391,37 +402,39 @@ Take control of your reports and can reduce dependencies on subscription hosts.<
 <ul>
 <li><a href="%5BRStudio%20User%20Guide%20-%20Get%20Started%20(posit.co)%5D(https://docs.posit.co/ide/user/ide/get-started/#blank-slate)">Blank Slate Approach to <strong>reproducibility</strong>: RStudio <strong>settings</strong></a></li>
 <li><strong>BUILD</strong> <code>quarto render</code> (<strong>Render</strong> Proejct)</li>
-<li><code>_quarto.yaml</code> <a href="https://quarto.org/docs/authoring/front-matter.html">Example at Quarto documentation</a></li>
+<li><code>_quarto.yaml</code> <a href="https://quarto.org/docs/authoring/front-matter.html" style="color: grey; font-size: x-large;"><code>&lt;--</code> Example at Quarto documentation</a></li>
 </ul></li>
 </ul>
 </section>
 <section id="prerequisites" class="slide level2">
 <h2>Prerequisites</h2>
 <ul>
-<li>Already installed tinytex on Windows via Terminal (takes several minutes)
+<li>Already installed <em>tinytex</em> on Windows via Terminal <span style="color: grey; font-size: x-large;">(takes several minutes)</span>
 <ul>
 <li>Rstudio &gt; Terminal &gt; <code>quarto install tinytex</code></li>
 </ul></li>
-<li>Using RStudio Project protocol and
+<li>Use <strong>RStudio Project</strong> protocol
 <ul>
-<li>putting parent folder under git version control (next week)</li>
-<li>Using {renv} to ensure I’m backing up specific package versions</li>
-<li>Using GitHub to manage versioning</li>
+<li>And folder under git version control <span style="color: grey; font-size: x-large;">(next week)</span></li>
+<li>Use {renv} to back-up specific package versions</li>
+<li>Use GitHub to manage versions</li>
 <li>Linking GitHub to Zenodo to mint DOIs and archive milestones</li>
 </ul></li>
 </ul>
 </section>
-<section id="prequeisites-continued" class="slide level2">
-<h2>Prequeisites continued</h2>
+<section id="prequeisites" class="slide level2">
+<h2>Prequeisites …</h2>
+<p><br>
+Bibliography</p>
 <ul>
 <li>references.bib - <strong>bibliography file</strong></li>
 </ul>
 </section>
 <section id="show" class="slide level2">
 <h2>SHOW</h2>
-<p>Clone example from GitHub</p>
+<p>Clone <a href="https://github.com/quarto-ext/manuscript-template-rstudio">example</a> from GitHub</p>
 <ul>
-<li>RStudio &gt; Project &gt; new Project &gt; Quarto Manuscript</li>
+<li>RStudio &gt; Project &gt; new Project &gt; Quarto Manuscript &nbsp;(<a href="https://github.com/quarto-ext/manuscript-template-rstudio">documentation example</a>)</li>
 </ul>
 </section>
 <section id="more-information" class="slide level2">
