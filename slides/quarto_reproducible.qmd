@@ -81,6 +81,9 @@ A notebook is a document containing code and natural language
 -   Jupyter (.ipynb)
 -   Quarto document (.qmd) (next-gen R Markdown)
 
+## [Quarto Notebook in RStudio]{style="background-color: #002B36; border-radius: 10px; padding: 10px; text-align: center;"} {background-image="rrp/quarto_notebook.png" background-transition="fade"}
+
+
 ## What we'll learn
 
 Streamlining reproducible workflows - from code to reports (slides, PDF, dahsboards, etc.) that enable reproducible workflows and simplify generating reports from code.
