@@ -58,8 +58,6 @@ Typically involves:
 
 ## Quarto
 
-\
-
 Quarto is a scientific publishing system that enables reproducible workflows and simplifies report generation.
 
 \
@@ -69,6 +67,10 @@ Quarto uses notebooks as the primary document format.
 \
 
 RStudio and Quarto were introduced and discussed in previous sessions.
+
+\
+
+[[Get Started text with videos](https://intro2r.library.duke.edu/) ● [Exercises, code, slides](https://github.com/libjohn/rforlunch_exercises)]{style="font-size: x-large; display: flex; align-items: center; justify-content: center;"}
 
 ## Notebooks
 
@@ -89,9 +91,9 @@ Take control of your reports and can reduce dependencies on subscription hosts.
 ## RStudio configurations
 
 -   Demo a Quarto Manuscript
-    -   [Blank Slate Approach to **reproducibility**: RStudio **settings**](%5BRStudio%20User%20Guide%20-%20Get%20Started%20(posit.co)%5D(https://docs.posit.co/ide/user/ide/get-started/#blank-slate))
-    -   **BUILD** `quarto render` [(**Render** Proejct)]{style="color: grey; font-size: x-large;"}
-    -   `_quarto.yaml` [ - -  Example at Quarto documentation](https://quarto.org/docs/authoring/front-matter.html){style="color: grey; font-size: x-large;"}
+    -   [Blank Slate Approach to **reproducibility**: RStudio **settings**](https://docs.posit.co/ide/user/ide/get-started/#blank-slate)
+    -   **BUILD** `quarto render` [([Render styles](https://quarto.org/docs/guide/))]{style="color: grey; font-size: x-large;"}
+    -   `_quarto.yaml` [([Example at Quarto documentation](https://quarto.org/docs/authoring/front-matter.html))]{style="font-size: x-large;"}
 
 ## Prerequisites
 
@@ -101,7 +103,7 @@ Take control of your reports and can reduce dependencies on subscription hosts.
     -   Use git version control [(next week)]{style="color: grey; font-size: x-large;"}
     -   Use {renv} to back-up specific package versions
     -   Use GitHub to manage versions
-    -   Link GitHub to Zenodo to mint DOIs and archive milestones
+    -   Link GitHub to Zenodo to mint DOIs and archive milestones [([Instructions](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content))]{style="font-size: x-large;"}
 
 ## Prequeisites . . .
 
@@ -122,13 +124,19 @@ Clone [example](https://github.com/quarto-ext/manuscript-template-rstudio) from 
 ## More information:
 
 -   [Çetinkaya-Rundel & Wickham](https://mine-cetinkaya-rundel.github.io/quarto-jsm24/4-manuscripts/4-manuscripts.html)
--   [Quarto documentation on Manuscripts](%5BQuarto%20Manuscripts%20–%20Quarto%5D(https://quarto.org/docs/manuscripts/))
+-   [Quarto documentation on Manuscripts](https://quarto.org/docs/manuscripts/)
 
 ## Hands-on
 
-Make a new RStudio project - choose WebSite
+#### Create a Quarto webSite
 
-[Directions](https://mine-cetinkaya-rundel.github.io/quarto-jsm24/4-manuscripts/4-manuscripts.html#/getting-started) from Çetinkaya-Rundel & Wickham
+> `RStudio: File > New Project > New Directory > Quarto Website`
+
+#### Create a Quarto Manuscript
+
+    RStudio: File > New Project > New Directory > Quarto Manuscript
+
+[Or, follow these [directions](https://mine-cetinkaya-rundel.github.io/quarto-jsm24/4-manuscripts/4-manuscripts.html#/getting-started) from Çetinkaya-Rundel & Wickham]{style="font-size: xx-large;"}
 
 ## Dashboards
 
