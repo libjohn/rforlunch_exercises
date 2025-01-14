@@ -63,11 +63,16 @@ Preceded by [where to download RStudio and R](https://posit.co/download/rstudio-
 
 ## R for Lunch as a series
 
-R for Lunch is a series that meets 8 times (till EOM Oct.) After today it will meet regularly on Thursdays at noon.
+R for Lunch is a series that meets 8 times (through March.) After today it will meet regularly on Thursdays at noon.
 
 -   Sign-up for each workshop individually
 
--   Each episode has a unique zoom link
+-   ~~Each episode has a unique zoom link AND/OR~~ \
+    find a recording/data/slides/code from a previous CDVS workshop episode
+
+    -   [CDVS Online Learning Tutorials](https://library.duke.edu/data/tutorials)
+
+    -   Specific R for Lunch videos: <https://warpwire.duke.edu/w/bQAEAA/>
 
 ## Eat your own dog food
 
@@ -174,7 +179,7 @@ tidyr::relig_income |>
 
 ## Tall data
 
-::: columns
+::::: columns
 ::: {.column width="40%"}
 ```{r}
 #| code-line-numbers: 2-4
@@ -216,7 +221,7 @@ relig_income |>
                                  
 ```
 :::
-:::
+:::::
 
 ## Code
 
@@ -291,16 +296,16 @@ Along the way
 
  
 
-+--------------+---------------+---------------------+-------------------+
-| Operator     | Operator Name | Keystroke shortucts | Pnuemonic         |
-+==============+===============+=====================+===================+
-| `<-`         | assignment    | Alt-dash            | "Gets value from" |
-+--------------+---------------+---------------------+-------------------+
-| `|>`\        | pipe          | Ctrl-Shift-M        | "And then"        |
-| or           |               |                     |                   |
-|              |               |                     |                   |
-| `%>%`        |               |                     |                   |
-+--------------+---------------+---------------------+-------------------+
++---------------+---------------+---------------------+-------------------+
+| Operator      | Operator Name | Keystroke shortucts | Pnuemonic         |
++===============+===============+=====================+===================+
+| `<-`          | assignment    | Alt-dash            | "Gets value from" |
++---------------+---------------+---------------------+-------------------+
+| `|>`\         | pipe          | Ctrl-Shift-M        | "And then"        |
+| or            |               |                     |                   |
+|               |               |                     |                   |
+| `%>%`         |               |                     |                   |
++---------------+---------------+---------------------+-------------------+
 
 ## Citation management
 
