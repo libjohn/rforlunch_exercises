@@ -64,11 +64,11 @@ editor: visual
 
 ## R for Lunch as a series
 
-R for Lunch is a series that meets 8 times (till EOM Feb.) After today it will meet regularly on Thursdays at noon.
+R for Lunch is a series that meets 8 times regularly on Thursdays at noon, through early March
 
 -   Sign-up for each workshop individually
 
--   Each episode has a unique zoom link
+-   ~~Each episode has a unique zoom link~~
 
 ## Eat your own dog food
 
@@ -85,16 +85,16 @@ Model how R can work for practical reproducible workflows
 
  
 
-+--------------+---------------+---------------------+-------------------+
-| Operator     | Operator Name | Keystroke Shortcuts | Pnuemonic         |
-+==============+===============+=====================+===================+
-| `<-`         | assignment    | Alt-dash            | "Gets value from" |
-+--------------+---------------+---------------------+-------------------+
-| `|>`\        | pipe          | Ctrl-Shift-M        | "And then"        |
-| or           |               |                     |                   |
-|              |               |                     |                   |
-| `%>%`        |               |                     |                   |
-+--------------+---------------+---------------------+-------------------+
++---------------+---------------+---------------------+-------------------+
+| Operator      | Operator Name | Keystroke Shortcuts | Pnuemonic         |
++===============+===============+=====================+===================+
+| `<-`          | assignment    | Alt-dash            | "Gets value from" |
++---------------+---------------+---------------------+-------------------+
+| `|>`\         | pipe          | Ctrl-Shift-M        | "And then"        |
+| or            |               |                     |                   |
+|               |               |                     |                   |
+| `%>%`         |               |                     |                   |
++---------------+---------------+---------------------+-------------------+
 
 # Tidyverse and Tidy data
 
@@ -133,7 +133,7 @@ tidyr::relig_income |>
 
 ## Tall data
 
-::: columns
+::::: columns
 ::: {.column width="40%"}
 ```{r}
 #| code-line-numbers: 2-4
@@ -175,7 +175,7 @@ relig_income |>
                                  
 ```
 :::
-:::
+:::::
 
 ## Code
 
@@ -238,16 +238,16 @@ Image Credit: apreshill \| CC BY 4.0 \| https://github.com/apreshill/teachthat/b
 
  
 
-+--------------+---------------+---------------------+-------------------+
-| Operator     | Operator Name | Keystroke shortcuts | Pnuemonic         |
-+==============+===============+=====================+===================+
-| `<-`         | assignment    | Alt-dash            | "Gets value from" |
-+--------------+---------------+---------------------+-------------------+
-| `|>`\        | pipe          | Ctrl-Shift-M        | "And then"        |
-| or           |               |                     |                   |
-|              |               |                     |                   |
-| `%>%`        |               |                     |                   |
-+--------------+---------------+---------------------+-------------------+
++---------------+---------------+---------------------+-------------------+
+| Operator      | Operator Name | Keystroke shortcuts | Pnuemonic         |
++===============+===============+=====================+===================+
+| `<-`          | assignment    | Alt-dash            | "Gets value from" |
++---------------+---------------+---------------------+-------------------+
+| `|>`\         | pipe          | Ctrl-Shift-M        | "And then"        |
+| or            |               |                     |                   |
+|               |               |                     |                   |
+| `%>%`         |               |                     |                   |
++---------------+---------------+---------------------+-------------------+
 
 ## Citation management
 
