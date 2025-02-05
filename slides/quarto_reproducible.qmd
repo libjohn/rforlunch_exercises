@@ -152,9 +152,9 @@ Dashboards: Just like a standard quarto document ([docs](https://quarto.org/docs
 ## More tips
 
 -   Themes
-    -   [HTML](%5BHTML%20Theming%20–%20Quarto%5D(https://quarto.org/docs/output-formats/html-themes.html)) \| [slides](%5BReveal%20Themes%20–%20Quarto%5D(https://quarto.org/docs/presentations/revealjs/themes.html))
--   [Includes](%5BIncludes%20–%20Quarto%5D(https://quarto.org/docs/authoring/includes.html)) - child documents reference from parent notebooks
--   [Extensions](%5BQuarto%20Extensions%20–%20Quarto%5D(https://quarto.org/docs/extensions/))
--   [CSS Styles](%5BContent%20Editing%20–%20Quarto%5D(https://quarto.org/docs/visual-editor/content.html#css-styles))
--   [Citations & Bibliographies](%5BCitations%20–%20Quarto%5D(https://quarto.org/docs/authoring/citations.html))
--   [PDF Engines](%5BPDF%20Engines%20–%20Quarto%5D(https://quarto.org/docs/output-formats/pdf-engine.html#installing-tex))
+    -   [HTML](https://quarto.org/docs/output-formats/html-themes.html) \| [slides](https://quarto.org/docs/presentations/revealjs/themes.html)
+-   [Includes](https://quarto.org/docs/authoring/includes.html) - child documents reference from parent notebooks
+-   [Extensions](https://quarto.org/docs/extensions/)
+-   [CSS Styles](https://quarto.org/docs/visual-editor/content.html#css-styles)
+-   [Citations & Bibliographies](https://quarto.org/docs/authoring/citations.html)
+-   [PDF Engines](https://quarto.org/docs/output-formats/pdf-engine.html#installing-tex)
