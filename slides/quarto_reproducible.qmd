@@ -143,7 +143,7 @@ Clone [example](https://github.com/quarto-ext/manuscript-template-rstudio) from 
 
 ## Dashboards
 
-Dashboards: Just like a standard quarto document ([docs](%5BQuarto%20Dashboards%20–%20Quarto%5D(https://quarto.org/docs/dashboards/))). YAML -\> `format: dashboard`
+Dashboards: Just like a standard quarto document ([docs](https://quarto.org/docs/dashboards/)). YAML -\> `format: dashboard`
 
 -   Interactivity
     -   Simple interactivity with [HTML Widgets](%5Bhtmlwidgets%20for%20R%5D(https://www.htmlwidgets.org/))
