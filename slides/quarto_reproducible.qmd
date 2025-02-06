@@ -103,7 +103,7 @@ Take control of your reports and can reduce dependencies on subscription hosts.
 -   Already installed _tinytex_ on Windows via Terminal [(takes several minutes)]{style="color: grey; font-size: x-large;"}
     -   Rstudio \> Terminal \> `quarto install tinytex`
 -   Use **RStudio Project** protocol 
-    -   Use git version control [(next week)]{style="color: grey; font-size: x-large;"}
+    -   Use git version control 
     -   Use {renv} to back-up specific package versions
     -   Use GitHub to manage versions
     -   Link GitHub to Zenodo to mint DOIs and archive milestones [([Instructions](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content))]{style="font-size: x-large;"}
@@ -122,7 +122,7 @@ Quarto leverages bib files from from bibliographic reference managers [(Zotero, 
 
 Clone [example](https://github.com/quarto-ext/manuscript-template-rstudio) from GitHub
 
--   RStudio \> Project \> new Project \> Quarto Manuscript  \ ([documentation example](https://github.com/quarto-ext/manuscript-template-rstudio))
+-   RStudio \> Project \> new Project \> Quarto Manuscript  \ ([documentation example](https://quarto.org/docs/manuscripts/authoring/rstudio.html))
 
 ## More information:
 
