@@ -146,7 +146,7 @@ Clone [example](https://github.com/quarto-ext/manuscript-template-rstudio) from 
 Dashboards: Just like a standard quarto document ([docs](https://quarto.org/docs/dashboards/)). YAML -\> `format: dashboard`
 
 -   Interactivity
-    -   Simple interactivity with [HTML Widgets](%5Bhtmlwidgets%20for%20R%5D(https://www.htmlwidgets.org/))
+    -   Simple interactivity with [HTML Widgets](https://www.htmlwidgets.org/)
     -   Advanced interactivity with Shiny (server-side) and Observable (client-side)
 
 ## More tips
