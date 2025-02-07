@@ -108,7 +108,7 @@ Take control of your reports and can reduce dependencies on subscription hosts.
     -   Use GitHub to manage versions
     -   Link GitHub to Zenodo to mint DOIs and archive milestones [([Instructions](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content))]{style="font-size: x-large;"}
 
-## Prequeisites . . .
+## Prerequisites . . .
 
 \
 Bibliography
